@@ -2,8 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    android:maxHeight="700dp"
     tools:context=".WelcomePageSecondActivity">
 
     <TextView
@@ -14,6 +15,8 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="50dp"
         android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
@@ -35,8 +38,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="256dp"
+        android:layout_width="255dp"
+        android:layout_height="228dp"
         android:layout_marginTop="36dp"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintHorizontal_bias="0.496"
@@ -46,12 +49,14 @@
 
     <TextView
         android:id="@+id/morningQuoteTextView"
-        android:layout_width="338dp"
-        android:layout_height="111dp"
+        android:layout_width="336dp"
+        android:layout_height="68dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:text="TextView"
+        android:text="With the new day comes new strength and new thoughts. Good morning and lets us prepare ourselves for a wonderful Day ahead."
+        android:textAlignment="center"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.235"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
@@ -61,10 +66,9 @@
         android:id="@+id/letsDoCheerfulActivitiesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:text="Lets Do Cheerful Activities"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@+id/morningQuoteTextView" />
 
@@ -84,10 +88,12 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="16dp"
-        android:text="Go Back"
+        android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/letsDoCheerfulActivitiesButton"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/letsDoCheerfulActivitiesButton"
+        app:layout_constraintVertical_bias="0.327" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

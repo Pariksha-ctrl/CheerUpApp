@@ -18,7 +18,7 @@ public class WelcomePageSecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_page_second);
 
-        User user;
+        final User user;
 
         Intent userCallerIntent = getIntent();
         user = (User) userCallerIntent.getSerializableExtra(User.USER_KEY);
@@ -28,19 +28,18 @@ public class WelcomePageSecondActivity extends AppCompatActivity {
 
         letsDoCheerfulActivitiesButton = findViewById(R.id.letsDoCheerfulActivitiesButton);
         goBackToMainPageButton = findViewById(R.id.goBackToMainPageButton);
-/*
+
         goBackToMainPageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goBackToMainPageIntent = new Intent();
+                Intent goingBackToMainPageIntent = new Intent();
+                goingBackToMainPageIntent.putExtra(User.USER_KEY, user);
+                goingBackToMainPageIntent.putExtra("USER_LEAVING_MESSAGE", "See you again!");
                 // notify an activity finishes without error
-                setResult(RESULT_OK, goBackToMainPageIntent);
+                setResult(RESULT_OK, goingBackToMainPageIntent);
                 // ends the current activity
                 finish();
             }
-        });*/
-
-
-
+        });
     }
 }

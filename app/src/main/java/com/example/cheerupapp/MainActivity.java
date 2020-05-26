@@ -52,21 +52,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(goToWelcomePageIntent, REQUEST_CODE_WELCOME_PAGE_SECOND_SCREEN);
             }
         });
+    }
 
-/*        @Override
-        protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-            super.onActivityResult(requestCode, resultCode, data);
-
-            if (requestCode == REQUEST_CODE_WELCOME_PAGE_SECOND_SCREEN){
-
-                if (resultCode == RESULT_OK){
-                    // if all good
-                    String messagePassedBackToUser = data.getStringExtra("MESSAGE_DESC");
-                    Toast.makeText(this, messagePassedBackToUser, Toast.LENGTH_SHORT).show();
-                }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_WELCOME_PAGE_SECOND_SCREEN){
+            if (resultCode == RESULT_OK){
+                // if all good
+                String messagePassedBackToLeavingUser = data.getStringExtra("USER_LEAVING_MESSAGE");
+                Toast.makeText(this, messagePassedBackToLeavingUser, Toast.LENGTH_SHORT).show();
             }
-        }*/
-
+        }
     }
 }
 
