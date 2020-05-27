@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import static com.example.cheerupapp.Constants.REQUEST_CODE_MORNING_ACTIVITIES_THIRD_SCREEN;
-
 public class WelcomePageSecondActivity extends AppCompatActivity {
 
     TextView userNameTextView;
@@ -26,7 +24,7 @@ public class WelcomePageSecondActivity extends AppCompatActivity {
         Intent userCallerIntent = getIntent();
         user = (User) userCallerIntent.getSerializableExtra(User.USER_KEY);
 
-        final TextView userNameTextView = findViewById(R.id.userNameTextView);
+        final TextView userNameTextView = findViewById(R.id.userGreetingTextView);
         userNameTextView.setText(user.getName());
 
         letsDoCheerfulActivitiesButton = findViewById(R.id.letsDoCheerfulActivitiesButton);

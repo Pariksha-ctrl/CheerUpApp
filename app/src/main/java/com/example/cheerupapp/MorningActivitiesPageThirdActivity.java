@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class MorningActivitiesPageThirdActivity extends AppCompatActivity {
 
-    TextView userNameTextView;
+    TextView userGreetingTextView;
     Button goBackToWelcomePageButton;
 
     @Override
@@ -24,6 +24,9 @@ public class MorningActivitiesPageThirdActivity extends AppCompatActivity {
 
         userNameTextView = findViewById(R.id.userNameTextView);
         userNameTextView.setText(user.getName());*/
+
+        userGreetingTextView = findViewById(R.id.userGreetingTextView);
+        userGreetingTextView.setText("Hi There!");
 
         goBackToWelcomePageButton = findViewById(R.id.goBackToWelcomePageButton);
 

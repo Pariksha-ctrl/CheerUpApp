@@ -16,8 +16,8 @@
         <ImageView
             android:id="@+id/logoImageView"
             android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:scaleType="fitCenter"
+            android:layout_height="120dp"
+            android:scaleType="fitXY"
             app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             app:layout_constraintTop_toTopOf="parent"
@@ -72,7 +72,7 @@
             app:srcCompat="@drawable/pointing_finger_cheerup" />
 
         <TextView
-            android:id="@+id/userNameTextView"
+            android:id="@+id/userGreetingTextView"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="44dp"
@@ -94,7 +94,7 @@
             app:layout_constraintEnd_toStartOf="@+id/middleGuideline"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-            app:layout_constraintTop_toBottomOf="@+id/userNameTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/userGreetingTextView" />
 
         <Button
             android:id="@+id/goBackToWelcomePageButton"

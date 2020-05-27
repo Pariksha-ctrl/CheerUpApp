@@ -17,8 +17,8 @@
         <ImageView
             android:id="@+id/logoImageView"
             android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:scaleType="fitCenter"
+            android:layout_height="120dp"
+            android:scaleType="fitXY"
             app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             app:layout_constraintTop_toTopOf="parent"

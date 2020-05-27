@@ -14,7 +14,7 @@
 
 
         <TextView
-            android:id="@+id/userNameTextView"
+            android:id="@+id/userGreetingTextView"
             android:layout_width="0dp"
             android:layout_height="38dp"
             android:layout_marginStart="50dp"
@@ -52,7 +52,7 @@
             app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-            app:layout_constraintTop_toBottomOf="@+id/userNameTextView"
+            app:layout_constraintTop_toBottomOf="@+id/userGreetingTextView"
             app:srcCompat="@drawable/profile_picture_cheerup" />
 
         <TextView
@@ -86,8 +86,8 @@
         <ImageView
             android:id="@+id/logoImageView"
             android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:scaleType="fitCenter"
+            android:layout_height="120dp"
+            android:scaleType="fitXY"
             app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             app:layout_constraintTop_toTopOf="parent"
