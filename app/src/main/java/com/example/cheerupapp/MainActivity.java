@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
                 // this states our intention on what we want to do
                 Intent goToWelcomePageIntent = new Intent(MainActivity.this, WelcomePageSecondActivity.class);
                 String userName = userNameEditText.getText().toString();
-
                 // create an instance of User
                 User user = new User();
                 user.setName(userName);
