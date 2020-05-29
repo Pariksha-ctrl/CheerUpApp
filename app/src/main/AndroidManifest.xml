@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.AddSongScrollingActivity"
+            android:name=".activities.AddSongForDanceScrollingActivity"
             android:label="@string/title_activity_add_song_scrolling"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".ExercisePageSixthActivity" />

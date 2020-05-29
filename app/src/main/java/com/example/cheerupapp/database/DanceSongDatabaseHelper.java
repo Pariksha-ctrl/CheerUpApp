@@ -10,14 +10,17 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.cheerupapp.entities.DanceSong;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 // database helper class
-public class SongDatabaseHelper extends SQLiteOpenHelper {
+public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
 
     // this is the instance which all objects of this databases will share
-    private static SongDatabaseHelper songInstance = null;
+    private static DanceSongDatabaseHelper songInstance = null;
     private Context context;
 
     //creating constants for database
@@ -47,30 +50,30 @@ public class SongDatabaseHelper extends SQLiteOpenHelper {
     // this will return all the data from the database
     private static final String GET_ALL_STRING = "SELECT * FROM " + TABLE_NAME;
 
-    public SongDatabaseHelper(Context applicationContext) {
+    public DanceSongDatabaseHelper(Context applicationContext) {
         super();
     }
 
     // this method is use to avoiding creating large number of instance of Song
-    public static synchronized SongDatabaseHelper getInstance(Context context){
+    public static synchronized DanceSongDatabaseHelper getInstance(Context context){
         if (songInstance == null){
             //this is executed only for the first time
-            songInstance = new SongDatabaseHelper(context.getApplicationContext());
+            songInstance = new DanceSongDatabaseHelper(context.getApplicationContext());
         }
         //when Song is not null anymore
         return songInstance;
     }
 
 
-    public SongDatabaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public DanceSongDatabaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
-    public SongDatabaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version, @Nullable DatabaseErrorHandler errorHandler) {
+    public DanceSongDatabaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version, @Nullable DatabaseErrorHandler errorHandler) {
         super(context, name, factory, version, errorHandler);
     }
 
-    public SongDatabaseHelper(@Nullable Context context, @Nullable String name, int version, @NonNull SQLiteDatabase.OpenParams openParams) {
+    public DanceSongDatabaseHelper(@Nullable Context context, @Nullable String name, int version, @NonNull SQLiteDatabase.OpenParams openParams) {
         super(context, name, version, openParams);
     }
 
@@ -136,12 +139,12 @@ public class SongDatabaseHelper extends SQLiteOpenHelper {
     }
 
     // returning the list all songs from the SONG database table
-    public List<Song> getSongs(){
-        List<Song> songs = new ArrayList<>();
+    public List<DanceSong> getDanceSongs(){
+        List<DanceSong> danceSongs = new ArrayList<>();
         Cursor cursor = getAll();
 
         if (cursor.getCount() > 0){
-            Song song;
+            DanceSong danceSong;
             while (cursor.moveToNext()){
                 Long id = cursor.getLong(0);
                 String name = cursor.getString(1);
@@ -150,11 +153,17 @@ public class SongDatabaseHelper extends SQLiteOpenHelper {
                 String imageName = cursor.getString(4);
                 Long rating = cursor.getLong(5);
 
-                song = new Song(id, name, favoriteVerse, singer, imageName, rating);
-                songs.add(song);
+                danceSong = new DanceSong(id, name, favoriteVerse, singer, imageName, rating);
+                danceSongs.add(danceSong);
             }
         }
         cursor.close();
-        return songs;
+        return danceSongs;
+    }
+
+    //this method returns a cursor of all songs in the 'Song' table
+    private Cursor getAll(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery(GET_ALL_STRING, null);
     }
 }
