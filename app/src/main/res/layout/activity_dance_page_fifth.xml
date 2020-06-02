@@ -56,14 +56,100 @@
 
         <Button
             android:id="@+id/addNewSongForDanceButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="341dp"
+            android:layout_height="70dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:text="Add New Song For Dance"
             app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/danceSongEditText" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/danceSongEditText"
+            android:layout_width="335dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:hint="ID (Update or Delete your song)"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             app:layout_constraintTop_toBottomOf="@+id/danceTextView" />
+
+        <Button
+            android:id="@+id/clearButton"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:text="CLEAR"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/addNewSongForDanceButton" />
+
+        <Button
+            android:id="@+id/updateButton"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:text="UPDATE"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/viewAllButton" />
+
+        <Button
+            android:id="@+id/viewAllButton"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:text="VIEW ALL"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/clearButton" />
+
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:text="DELETE"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/updateButton" />
+
+        <Button
+            android:id="@+id/goBackToMorningActivityButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="300dp"
+            android:background="#2CFFFFFF"
+            android:text="Back"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/deleteButton"
+            app:rippleColor="#2CFFFFFF" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

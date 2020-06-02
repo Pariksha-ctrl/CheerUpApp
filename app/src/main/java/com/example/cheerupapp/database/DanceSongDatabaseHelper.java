@@ -1,5 +1,6 @@
 package com.example.cheerupapp.database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -20,13 +21,13 @@ import java.util.Random;
 public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
 
     // this is the instance which all objects of this databases will share
-    private static DanceSongDatabaseHelper songInstance = null;
+    private static DanceSongDatabaseHelper danceSongInstance = null;
     private Context context;
 
     //creating constants for database
-    private static final String DATABASE_NAME = "song.db";
+    private static final String DATABASE_NAME = "danceSong.db";
     private static final Integer DATABASE_VERSION = 1;
-    private static final String TABLE_NAME = "song";
+    private static final String TABLE_NAME = "danceSong";
 
     //creating constants for columns name of table (song)
     private static final String COL_ID = "ID";
@@ -37,44 +38,30 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_RATING = "RATING";
 
     //Creating sql statements initial version
-    private static final String CREATE_TABLE_STRING = "CREATE TABLE" + TABLE_NAME + "(" +
-            COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COL_NAME + " TEXT, " +
-            COL_FAVORITE_VERSE + " TEXT, " +
-            COL_SINGER + " TEXT DEFAULT 'Sonu Nigum'," +
-            COL_IMAGE + " TEXT, " +
-            COL_RATING + " INTEGER )";
+    private static final String CREATE_TABLE_STRING = "CREATE TABLE " + TABLE_NAME + "(" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COL_NAME + " TEXT, " +
+                COL_FAVORITE_VERSE + " TEXT, " +
+                COL_SINGER + " TEXT DEFAULT 'Sonu Nigum'," +
+                COL_IMAGE + " TEXT, " +
+                COL_RATING + " INTEGER )";
 
     // if table doesn't exists it will give an error and delete that table only if it exists in database
-    private static final String DROP_TABLE_STRING = "DROP_TABLE_IF_EXISTS, " + TABLE_NAME;
+    private static final String DROP_TABLE_STRING = "DROP TABLE IF EXISTS " + TABLE_NAME;
     // this will return all the data from the database
     private static final String GET_ALL_STRING = "SELECT * FROM " + TABLE_NAME;
 
-    public DanceSongDatabaseHelper(Context applicationContext) {
-        super();
-    }
-
     // this method is use to avoiding creating large number of instance of Song
     public static synchronized DanceSongDatabaseHelper getInstance(Context context){
-        if (songInstance == null){
-            //this is executed only for the first time
-            songInstance = new DanceSongDatabaseHelper(context.getApplicationContext());
+        //this is executed only for the first time
+        if (danceSongInstance == null) {
+            danceSongInstance = new DanceSongDatabaseHelper(context.getApplicationContext());
         }
         //when Song is not null anymore
-        return songInstance;
+        return danceSongInstance;
     }
-
-
-    public DanceSongDatabaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
-    }
-
-    public DanceSongDatabaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version, @Nullable DatabaseErrorHandler errorHandler) {
-        super(context, name, factory, version, errorHandler);
-    }
-
-    public DanceSongDatabaseHelper(@Nullable Context context, @Nullable String name, int version, @NonNull SQLiteDatabase.OpenParams openParams) {
-        super(context, name, version, openParams);
+    private DanceSongDatabaseHelper(@Nullable Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     // this method is executed only if the database does not exists

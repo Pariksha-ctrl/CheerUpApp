@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="0dp"
+                android:layout_height="287dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/profile_picture_cheerup" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/leftGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.02" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/rightGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.98" />
+
+            <TextView
+                android:id="@+id/songNameTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="TextView"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+                app:layout_constraintHorizontal_bias="0.14"
+                app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <TextView
+                android:id="@+id/favoriteVerseTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/songNameTextView" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="106dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="4dp"
+                android:text="Button"
+                app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+                app:layout_constraintHorizontal_bias="0.029"
+                app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/favoriteVerseTextView" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="114dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="4dp"
+                android:text="Button"
+                app:layout_constraintBottom_toBottomOf="@+id/button"
+                app:layout_constraintEnd_toStartOf="@+id/middleGuideline"
+                app:layout_constraintStart_toEndOf="@+id/button"
+                app:layout_constraintTop_toTopOf="@+id/button"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/middleGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.60" />
+
+            <RatingBar
+                android:id="@+id/danceSongRatingBar"
+                style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+                android:layout_width="138dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="8dp"
+                android:numStars="10"
+                android:stepSize="1"
+                app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="44dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+                app:layout_constraintTop_toTopOf="@+id/button2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -69,6 +69,7 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
     }
 
     private void cancel(View v) {
+        finish();
     }
 
     private void addDanceSong(View v) {
@@ -90,6 +91,8 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
         //after we click add, we need to close this activity and go back to Dance page fifth activity
         // for that we need to create intent
         Intent goingBackToDancePage = new Intent();
-        goingBackToDancePage.putExtra();
+        goingBackToDancePage.putExtra(DanceSong.DANCE_SONG_KEY, danceSong);
+        setResult(RESULT_OK, goingBackToDancePage);
+        finish();
     }
 }
