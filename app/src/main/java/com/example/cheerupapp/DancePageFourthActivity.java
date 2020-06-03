@@ -24,10 +24,6 @@ import java.util.List;
 
 import static com.example.cheerupapp.entities.Constants.ADD_SONG_FOR_DANCE_ACTIVITY_CODE;
 
-//import android.widget.Toolbar;
-//import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-
 public class DancePageFourthActivity extends AppCompatActivity {
 
     TextView danceSongEditText;
@@ -47,8 +43,6 @@ public class DancePageFourthActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dance_page_fifth);
 
         final User user = null;
-
-
 
         addNewSongForDanceButton = findViewById(R.id.addNewSongForDanceButton);
         addNewSongForDanceButton.setOnClickListener(new View.OnClickListener() {

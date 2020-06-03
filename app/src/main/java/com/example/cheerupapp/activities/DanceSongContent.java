@@ -40,10 +40,6 @@ public class DanceSongContent extends AppCompatActivity {
         // GridLayoutManager
         danceSongRecyclerView.setLayoutManager(linearLayoutManager);
 
-        // Load Data from the database
-        danceSongDataService = new DanceSongDataService();
-        danceSongDataService.init(this);
-
         //Call database to get all the danceSong
         danceSongs = danceSongDataService.getDanceSongs();
 
@@ -74,7 +70,6 @@ public class DanceSongContent extends AppCompatActivity {
         builder.setCancelable(true);
         builder.setTitle(title);
         builder.setMessage(message);
-
         builder.show();
     }
 }
