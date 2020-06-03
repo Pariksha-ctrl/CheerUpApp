@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cheerupapp.RecyclerView.DanceSongRecyclerViewAdapter;
 import com.example.cheerupapp.activities.AddSongForDanceScrollingActivity;
+import com.example.cheerupapp.activities.DanceSongContent;
 import com.example.cheerupapp.entities.DanceSong;
 import com.example.cheerupapp.entities.User;
 import com.example.cheerupapp.services.DanceSongDataService;
@@ -39,47 +40,15 @@ public class DancePageFourthActivity extends AppCompatActivity {
 
     private DanceSongDataService danceSongDataService;
     private View rootView;
-    private DanceSong danceSong;
-    private List<DanceSong> danceSongs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dance_page_fifth);
-/*        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addNewSongForDance();
-            }
-        });*/
 
         final User user = null;
 
-        rootView = findViewById(android.R.id.content).getRootView();
 
-        RecyclerView danceSongRecyclerView = findViewById(R.id.danceSongRecyclerView);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        // GridLayoutManager
-        danceSongRecyclerView.setLayoutManager(linearLayoutManager);
-
-        // Load Data from the database
-        danceSongDataService = new DanceSongDataService();
-        danceSongDataService.init(this);
-
-        //Call database to get all the danceSong
-        danceSongs = danceSongDataService.getDanceSongs();
-
-        //Creating a RecyclerViewAdapter and passing the data
-        DanceSongRecyclerViewAdapter danceSongAdapter = new DanceSongRecyclerViewAdapter(danceSongs, this);
-
-        //Setting Adapter to the RecyclerView
-        danceSongRecyclerView.setAdapter(danceSongAdapter);
 
         addNewSongForDanceButton = findViewById(R.id.addNewSongForDanceButton);
         addNewSongForDanceButton.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +73,9 @@ public class DancePageFourthActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 viewAll(v);
+                // intent for viewing the list of songs
+                Intent goToDanceSongContentPage = new Intent(DancePageFourthActivity.this, DanceSongContent.class);
+                startActivity(goToDanceSongContentPage);
             }
         });
 
@@ -135,41 +107,11 @@ public class DancePageFourthActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        // initializing the database
-        danceSongDataService = new DanceSongDataService();
-        danceSongDataService.init(DancePageFourthActivity.this);
-
-
     }
 
 /*    private void clear(View v) {
         danceSongEditText.getText().clear();
     }*/
-
-    private void viewAll(View v) {
-        List<DanceSong> danceSongs = danceSongDataService.getDanceSongs();
-        String text = "";
-
-        if (danceSongs.size() > 0) {
-            for (DanceSong danceSong : danceSongs) {
-                text = text.concat(danceSong.toString());
-            }
-            showMessage("Data", text);
-        } else {
-            showMessage("Records", "Nothing found");
-        }
-    }
-
-    private void showMessage(String title, String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(message);
-
-        builder.show();
-    }
-
 
     private void update(View v) {
         String id = danceSongEditText.getText().toString();
@@ -209,17 +151,6 @@ public class DancePageFourthActivity extends AppCompatActivity {
         startActivityForResult(goToAddCreateSongForDanceIntent, ADD_SONG_FOR_DANCE_ACTIVITY_CODE);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == ADD_SONG_FOR_DANCE_ACTIVITY_CODE){
-            if (resultCode == RESULT_OK){
-                addDanceSong(data);
-            }
-        }
-    }
-
     private void addDanceSong(Intent data) {
         // to identify which class data we are getting
         // now we are getting dance song in here
@@ -236,6 +167,15 @@ public class DancePageFourthActivity extends AppCompatActivity {
         Snackbar.make(rootView, resultMessage, Snackbar.LENGTH_SHORT).show();
     }
 
-/*    private void setSupportActionBar(Toolbar toolbar) {
-    }*/
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == ADD_SONG_FOR_DANCE_ACTIVITY_CODE){
+            if (resultCode == RESULT_OK){
+                addDanceSong(data);
+            }
+        }
+    }
+
 }
