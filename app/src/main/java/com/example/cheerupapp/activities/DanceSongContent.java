@@ -8,6 +8,8 @@ import com.example.cheerupapp.R;
 
 public class DanceSongContent extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

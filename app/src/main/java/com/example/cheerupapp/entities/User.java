@@ -1,4 +1,4 @@
-package com.example.cheerupapp;
+package com.example.cheerupapp.entities;
 
 import java.io.Serializable;
 

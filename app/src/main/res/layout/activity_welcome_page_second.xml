@@ -57,8 +57,8 @@
 
         <TextView
             android:id="@+id/morningQuoteTextView"
-            android:layout_width="0dp"
-            android:layout_height="68dp"
+            android:layout_width="321dp"
+            android:layout_height="94dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
@@ -97,10 +97,10 @@
             android:id="@+id/goBackToMainPageButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="92dp"
+            android:layout_marginTop="16dp"
             android:text="Back"
             app:layout_constraintEnd_toStartOf="@+id/middleVerticalGuideline"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             app:layout_constraintTop_toBottomOf="@+id/letsDoCheerfulActivitiesButton" />
 

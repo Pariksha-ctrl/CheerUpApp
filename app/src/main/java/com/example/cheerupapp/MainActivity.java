@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.cheerupapp.entities.User;
+
 import static com.example.cheerupapp.Constants.REQUEST_CODE_WELCOME_PAGE_SECOND_SCREEN;
 
 public class MainActivity extends AppCompatActivity {

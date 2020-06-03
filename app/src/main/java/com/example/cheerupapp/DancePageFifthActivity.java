@@ -3,16 +3,22 @@ package com.example.cheerupapp;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+//import android.widget.Toolbar;
 
+import com.example.cheerupapp.RecyclerView.DanceSongRecyclerViewAdapter;
 import com.example.cheerupapp.activities.AddSongForDanceScrollingActivity;
 import com.example.cheerupapp.entities.DanceSong;
+import com.example.cheerupapp.entities.User;
 import com.example.cheerupapp.services.DanceSongDataService;
+//import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
@@ -32,18 +38,49 @@ public class DancePageFifthActivity extends AppCompatActivity {
 
     private DanceSongDataService danceSongDataService;
     private View rootView;
+    private DanceSong danceSong;
+    private List<DanceSong> danceSongs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dance_page_fifth);
+/*        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addNewSongForDance();
+            }
+        });*/
 
         final User user = null;
 
         rootView = findViewById(android.R.id.content).getRootView();
 
-        addNewSongForDanceButton = findViewById(R.id.addNewSongForDanceButton);
+        RecyclerView danceSongRecyclerView = findViewById(R.id.danceSongRecyclerView);
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        // GridLayoutManager
+        danceSongRecyclerView.setLayoutManager(linearLayoutManager);
+
+        // Load Data from the database
+        danceSongDataService = new DanceSongDataService();
+        danceSongDataService.init(this);
+
+        //Call database to get all the danceSong
+        danceSongs = danceSongDataService.getDanceSongs();
+
+        //Creating a RecyclerViewAdapter and passing the data
+        DanceSongRecyclerViewAdapter danceSongAdapter = new DanceSongRecyclerViewAdapter(danceSongs, this);
+
+        //Setting Adapter to the RecyclerView
+        danceSongRecyclerView.setAdapter(danceSongAdapter);
+
+        addNewSongForDanceButton = findViewById(R.id.addNewSongForDanceButton);
         addNewSongForDanceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,16 +139,7 @@ public class DancePageFifthActivity extends AppCompatActivity {
         danceSongDataService = new DanceSongDataService();
         danceSongDataService.init(DancePageFifthActivity.this);
 
-/*        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-     v       @Override
-            public void onClick(View v) {
-
-            }
-        });*/
     }
 
 /*    private void clear(View v) {
@@ -207,6 +235,6 @@ public class DancePageFifthActivity extends AppCompatActivity {
         Snackbar.make(rootView, resultMessage, Snackbar.LENGTH_SHORT).show();
     }
 
-    /*    private void setSupportActionBar(Toolbar toolbar) {
+/*    private void setSupportActionBar(Toolbar toolbar) {
     }*/
 }
