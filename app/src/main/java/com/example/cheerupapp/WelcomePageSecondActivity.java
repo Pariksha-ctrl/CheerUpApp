@@ -1,14 +1,17 @@
 package com.example.cheerupapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.cheerupapp.entities.User;
+
+import static com.example.cheerupapp.entities.Constants.REQUEST_CODE_MORNING_ACTIVITIES_PAGE_THIRD_SCREEN;
 
 public class WelcomePageSecondActivity extends AppCompatActivity {
 
@@ -60,6 +63,20 @@ public class WelcomePageSecondActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_MORNING_ACTIVITIES_PAGE_THIRD_SCREEN){
+          if (resultCode == RESULT_OK){
+                // if all good
+              /*
+                String messagePassedBackToLeavingUser = data.getStringExtra("USER_LEAVING_MESSAGE");
+                Toast.makeText(this, messagePassedBackToLeavingUser, Toast.LENGTH_SHORT).show();*/
+            }
+        }
+
     }
 
 }

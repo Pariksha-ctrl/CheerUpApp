@@ -15,7 +15,7 @@
             android:label="@string/title_activity_add_song_scrolling"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ExercisePageSixthActivity" />
-        <activity android:name=".DancePageFifthActivity" />
+        <activity android:name=".DancePageFourthActivity" />
         <activity android:name=".MeditationPageFourthActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

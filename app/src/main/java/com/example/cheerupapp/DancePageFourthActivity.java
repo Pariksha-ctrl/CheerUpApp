@@ -1,32 +1,33 @@
 package com.example.cheerupapp;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-//import android.widget.Toolbar;
-
 import com.example.cheerupapp.RecyclerView.DanceSongRecyclerViewAdapter;
 import com.example.cheerupapp.activities.AddSongForDanceScrollingActivity;
 import com.example.cheerupapp.entities.DanceSong;
 import com.example.cheerupapp.entities.User;
 import com.example.cheerupapp.services.DanceSongDataService;
-//import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
 import static com.example.cheerupapp.entities.Constants.ADD_SONG_FOR_DANCE_ACTIVITY_CODE;
 
+//import android.widget.Toolbar;
+//import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class DancePageFifthActivity extends AppCompatActivity {
+
+public class DancePageFourthActivity extends AppCompatActivity {
 
     TextView danceSongEditText;
     Button addNewSongForDanceButton;
@@ -137,7 +138,7 @@ public class DancePageFifthActivity extends AppCompatActivity {
 
         // initializing the database
         danceSongDataService = new DanceSongDataService();
-        danceSongDataService.init(DancePageFifthActivity.this);
+        danceSongDataService.init(DancePageFourthActivity.this);
 
 
     }
@@ -204,7 +205,7 @@ public class DancePageFifthActivity extends AppCompatActivity {
     }
 
     private void addNewSongForDance() {
-        Intent goToAddCreateSongForDanceIntent = new Intent(DancePageFifthActivity.this, AddSongForDanceScrollingActivity.class);
+        Intent goToAddCreateSongForDanceIntent = new Intent(DancePageFourthActivity.this, AddSongForDanceScrollingActivity.class);
         startActivityForResult(goToAddCreateSongForDanceIntent, ADD_SONG_FOR_DANCE_ACTIVITY_CODE);
     }
 

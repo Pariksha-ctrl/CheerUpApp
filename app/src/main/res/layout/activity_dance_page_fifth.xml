@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DancePageFifthActivity">
+    tools:context=".DancePageFourthActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/addNewSongButton"
@@ -57,7 +57,7 @@
         <Button
             android:id="@+id/addNewSongForDanceButton"
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="60dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
@@ -75,9 +75,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/danceSongEditText"
             android:layout_width="335dp"
-            android:layout_height="70dp"
+            android:layout_height="50dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:hint="ID (Update or Delete your song)"
             app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
@@ -88,7 +88,7 @@
         <Button
             android:id="@+id/clearButton"
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="60dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
@@ -101,7 +101,7 @@
         <Button
             android:id="@+id/updateButton"
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="60dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
@@ -114,7 +114,7 @@
         <Button
             android:id="@+id/viewAllButton"
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="60dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
@@ -127,7 +127,7 @@
         <Button
             android:id="@+id/deleteButton"
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="60dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"

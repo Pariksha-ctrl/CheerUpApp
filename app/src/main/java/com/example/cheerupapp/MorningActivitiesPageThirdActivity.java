@@ -1,17 +1,15 @@
 package com.example.cheerupapp;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import static com.example.cheerupapp.Constants.REQUEST_CODE_DANCE_PAGE_FOURTH_SCREEN;
-import static com.example.cheerupapp.Constants.REQUEST_CODE_WELCOME_PAGE_SECOND_SCREEN;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import static com.example.cheerupapp.entities.Constants.REQUEST_CODE_DANCE_PAGE_FOURTH_SCREEN;
 
 public class MorningActivitiesPageThirdActivity extends AppCompatActivity {
 
@@ -52,7 +50,7 @@ public class MorningActivitiesPageThirdActivity extends AppCompatActivity {
         danceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToDancePageIntent = new Intent(MorningActivitiesPageThirdActivity.this, DancePageFifthActivity.class);
+                Intent goToDancePageIntent = new Intent(MorningActivitiesPageThirdActivity.this, DancePageFourthActivity.class);
                 startActivity(goToDancePageIntent);
             }
         });
@@ -75,9 +73,9 @@ public class MorningActivitiesPageThirdActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_DANCE_PAGE_FOURTH_SCREEN){
             if (resultCode == RESULT_OK){
-                // if all good
+                /*// if all good
                 String messagePassedBackToLeavingUser = data.getStringExtra("USER_DANCE_LEAVE_MESSAGE");
-                Toast.makeText(this, messagePassedBackToLeavingUser, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, messagePassedBackToLeavingUser, Toast.LENGTH_SHORT).show();*/
             }
         }
 

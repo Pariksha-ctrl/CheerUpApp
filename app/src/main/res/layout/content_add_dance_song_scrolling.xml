@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activities.AddSongForDanceScrollingActivity"
-    tools:showIn="@layout/activity_add_song_scrolling">
+    tools:showIn="@layout/activity_add_dance_song_scrolling">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:hint="Type new song you like to add for dance"
             app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
@@ -70,7 +70,7 @@
             android:layout_width="0dp"
             android:layout_height="25dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="Rating"
             app:layout_constraintEnd_toStartOf="@+id/ratingSeekBar"
@@ -97,7 +97,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="80dp"
             android:text="CANCEL"
             app:layout_constraintEnd_toStartOf="@+id/addDanceSongButton"
@@ -116,10 +116,10 @@
 
         <TextView
             android:id="@+id/danceTextView"
-            android:layout_width="0dp"
-            android:layout_height="27dp"
+            android:layout_width="322dp"
+            android:layout_height="40dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             android:text="Dance"
             android:textAlignment="center"

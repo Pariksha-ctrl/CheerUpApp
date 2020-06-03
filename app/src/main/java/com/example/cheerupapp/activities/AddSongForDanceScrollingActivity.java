@@ -27,7 +27,7 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_song_scrolling);
+        setContentView(R.layout.activity_add_dance_song_scrolling);
 
         songNameEditText = findViewById(R.id.songNameEditText);
         addFavoriteVerseEditText = findViewById(R.id.addFavoriteVerseEditText);

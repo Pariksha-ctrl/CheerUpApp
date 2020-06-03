@@ -2,7 +2,6 @@ package com.example.cheerupapp.services;
 
 import android.content.Context;
 
-import com.example.cheerupapp.DancePageFifthActivity;
 import com.example.cheerupapp.database.DanceSongDatabaseHelper;
 import com.example.cheerupapp.entities.DanceSong;
 
