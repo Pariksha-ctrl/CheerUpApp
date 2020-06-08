@@ -7,20 +7,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cheerupapp.RecyclerView.DanceSongRecyclerViewAdapter;
 import com.example.cheerupapp.activities.AddSongForDanceScrollingActivity;
 import com.example.cheerupapp.activities.DanceSongContent;
 import com.example.cheerupapp.entities.DanceSong;
 import com.example.cheerupapp.entities.User;
 import com.example.cheerupapp.services.DanceSongDataService;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.util.List;
 
 import static com.example.cheerupapp.entities.Constants.ADD_SONG_FOR_DANCE_ACTIVITY_CODE;
 
@@ -66,7 +60,6 @@ public class DancePageFourthActivity extends AppCompatActivity {
         viewAllButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewAll(v);
                 // intent for viewing the list of songs
                 Intent goToDanceSongContentPage = new Intent(DancePageFourthActivity.this, DanceSongContent.class);
                 startActivity(goToDanceSongContentPage);

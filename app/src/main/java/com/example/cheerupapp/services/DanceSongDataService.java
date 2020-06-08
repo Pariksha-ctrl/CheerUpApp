@@ -28,7 +28,7 @@ public class DanceSongDataService {
     }
 
     public List<DanceSong> getDanceSongs(){
-        List<DanceSong> danceSongs = sqlite.getDanceSongs();
+        List<DanceSong> danceSongs = sqlite.getAllDanceSongs();
         return danceSongs;
     }
 }

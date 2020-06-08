@@ -11,17 +11,19 @@ public class DanceSong implements Serializable {
     private Long id;
     private String name;
     private String favoriteVerse;
-    private String singer;
-    private String imageName;
     private Long rating;
+    private String danceSongImageName;
+    private Long votes;
+    private Long stars;
 
-    public DanceSong(Long id, String name, String favoriteVerse, String singer, String imageName, Long rating) {
+    public DanceSong(Long id, String name, String favoriteVerse, String danceSongImageName, Long rating, Long votes, Long stars) {
         this.id = id;
         this.name = name;
         this.favoriteVerse = favoriteVerse;
-        this.singer = singer;
-        this.imageName = imageName;
+        this.danceSongImageName = danceSongImageName;
         this.rating = rating;
+        this.votes = votes;
+        this.stars = stars;
     }
 
     public DanceSong() {
@@ -52,27 +54,35 @@ public class DanceSong implements Serializable {
         this.favoriteVerse = favoriteVerse;
     }
 
-    public String getSinger() {
-        return singer;
-    }
-
-    public void setSinger(String singer) {
-        this.singer = singer;
-    }
-
-    public String getImageName() {
-        return imageName;
-    }
-
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
-    }
-
     public Long getRating() {
         return rating;
     }
 
     public void setRating(Long rating) {
         this.rating = rating;
+    }
+
+    public String getDanceSongImageName() {
+        return danceSongImageName;
+    }
+
+    public void setDanceSongImageName(String danceSongImageName) {
+        this.danceSongImageName = danceSongImageName;
+    }
+
+    public Long getVotes() {
+        return votes;
+    }
+
+    public void setVotes(Long votes) {
+        this.votes = votes;
+    }
+
+    public Long getStars() {
+        return stars;
+    }
+
+    public void setStars(Long stars) {
+        this.stars = stars;
     }
 }
