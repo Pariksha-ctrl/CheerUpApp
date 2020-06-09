@@ -2,13 +2,12 @@ package com.example.cheerupapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cheerupapp.R;
 import com.example.cheerupapp.entities.DanceSong;
@@ -21,7 +20,7 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
     private SeekBar ratingSeekBar;
     private Button cancelSongButton;
     private Button addDanceSongButton;
-    private Long ratingValue = 0L;
+    private Integer ratingValue = 0;
     private DanceSong danceSong;
 
     @Override
@@ -52,7 +51,7 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
         ratingSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                ratingValue = Long.valueOf(progress);
+                ratingValue = progress;
             }
 
             @Override
@@ -86,7 +85,7 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
         danceSong = new DanceSong();
         danceSong.setName(songName);
         danceSong.setFavoriteVerse(favoriteVerse);
-        danceSong.setRating(ratingValue);
+        danceSong.setRating((ratingValue));
 
         //after we click add, we need to close this activity and go back to Dance page fifth activity
         // for that we need to create intent

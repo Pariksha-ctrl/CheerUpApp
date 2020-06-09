@@ -96,7 +96,7 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
     }
 
     // it will return if something is updated or not
-    public boolean update(Long id, String name, String favoriteVerse, Long rating){
+    public boolean update(Long id, String name, String favoriteVerse, Integer rating){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues valuesOfDanceSongDatabaseTable = new ContentValues();
@@ -130,7 +130,7 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
                 String name = cursor.getString(1);
                 String favoriteVerse = cursor.getString(2);
                 String image = cursor.getString(3);
-                Long rating = cursor.getLong(4);
+                Integer rating = cursor.getInt(4);
                 Long votes = cursor.getLong(5);
                 Long stars = cursor.getLong(6);
 

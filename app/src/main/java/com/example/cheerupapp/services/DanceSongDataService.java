@@ -20,6 +20,7 @@ public class DanceSongDataService {
     }
 
     public boolean delete(DanceSong danceSong){
+
         return sqlite.delete(danceSong.getId());
     }
 
@@ -30,5 +31,15 @@ public class DanceSongDataService {
     public List<DanceSong> getDanceSongs(){
         List<DanceSong> danceSongs = sqlite.getAllDanceSongs();
         return danceSongs;
+    }
+
+    // this method is used to get a dance song from a database with its primary key - id
+    public DanceSong getDanceSong(Long id){
+        return null;
+    }
+
+    // this method is used to rate dance songs
+    public boolean rateDanceSong(Long id, Integer stars){
+        return false;
     }
 }

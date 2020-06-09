@@ -34,7 +34,7 @@ public class DanceSongViewHolder extends RecyclerView.ViewHolder {
         danceSongNameTextView.setText(danceSong.getName());
         favoriteVerseTextView.setText(danceSong.getFavoriteVerse());
         totalRateTextView.setText(danceSong.getRating() + " Ratings");
-        int resID = rootView.getResources().getIdentifier(danceSong.getImageName(), "drawable", rootView.getContext().getPackageName());
+        int resID = rootView.getResources().getIdentifier(danceSong.getDanceSongImageName(), "drawable", rootView.getContext().getPackageName());
         danceSongImageView.setImageResource(resID);
     }
 }

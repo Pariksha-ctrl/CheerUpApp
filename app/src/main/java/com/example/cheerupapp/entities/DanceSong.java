@@ -11,12 +11,12 @@ public class DanceSong implements Serializable {
     private Long id;
     private String name;
     private String favoriteVerse;
-    private Long rating;
     private String danceSongImageName;
+    private Integer rating;
     private Long votes;
     private Long stars;
 
-    public DanceSong(Long id, String name, String favoriteVerse, String danceSongImageName, Long rating, Long votes, Long stars) {
+    public DanceSong(Long id, String name, String favoriteVerse, String danceSongImageName, Integer rating, Long votes, Long stars) {
         this.id = id;
         this.name = name;
         this.favoriteVerse = favoriteVerse;
@@ -54,11 +54,11 @@ public class DanceSong implements Serializable {
         this.favoriteVerse = favoriteVerse;
     }
 
-    public Long getRating() {
+    public Integer getRating() {
         return rating;
     }
 
-    public void setRating(Long rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
@@ -84,5 +84,18 @@ public class DanceSong implements Serializable {
 
     public void setStars(Long stars) {
         this.stars = stars;
+    }
+
+    @Override
+    public String toString() {
+        return "DanceSong{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", favoriteVerse='" + favoriteVerse + '\'' +
+                ", danceSongImageName='" + danceSongImageName + '\'' +
+                ", rating=" + rating +
+                ", votes=" + votes +
+                ", stars=" + stars +
+                '}';
     }
 }
