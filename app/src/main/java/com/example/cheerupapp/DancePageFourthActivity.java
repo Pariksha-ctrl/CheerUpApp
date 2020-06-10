@@ -6,17 +6,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.cheerupapp.activities.AddSongForDanceScrollingActivity;
 import com.example.cheerupapp.activities.DanceSongContent;
 import com.example.cheerupapp.entities.DanceSong;
 import com.example.cheerupapp.entities.User;
 import com.example.cheerupapp.services.DanceSongDataService;
 import com.google.android.material.snackbar.Snackbar;
 
-import static com.example.cheerupapp.entities.Constants.ADD_SONG_FOR_DANCE_ACTIVITY_CODE;
+import java.util.List;
 
 public class DancePageFourthActivity extends AppCompatActivity {
 
@@ -29,7 +28,6 @@ public class DancePageFourthActivity extends AppCompatActivity {
     Button goBackToMorningActivityButton;
 
     private DanceSongDataService danceSongDataService;
-    private View rootView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +40,8 @@ public class DancePageFourthActivity extends AppCompatActivity {
         addNewSongForDanceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addNewSongForDance();
+                Intent goToDanceSongContentPageIntent = new Intent(DancePageFourthActivity.this, DanceSongContent.class);
+                startActivity(goToDanceSongContentPageIntent);
             }
         });
 
@@ -60,9 +59,7 @@ public class DancePageFourthActivity extends AppCompatActivity {
         viewAllButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // intent for viewing the list of songs
-                Intent goToDanceSongContentPage = new Intent(DancePageFourthActivity.this, DanceSongContent.class);
-                startActivity(goToDanceSongContentPage);
+                viewAll(v);
             }
         });
 
@@ -96,9 +93,28 @@ public class DancePageFourthActivity extends AppCompatActivity {
         });
     }
 
-/*    private void clear(View v) {
-        danceSongEditText.getText().clear();
-    }*/
+    private void viewAll(View v) {
+        List<DanceSong> danceSongs = danceSongDataService.getDanceSongs();
+        String text = "";
+
+        if (danceSongs.size() > 0) {
+            for (DanceSong danceSong : danceSongs) {
+                text = text.concat(danceSong.toString());
+            }
+            showMessage("Data", text);
+        } else {
+            showMessage("Records", "Nothing found");
+        }
+    }
+
+    private void showMessage(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
+    }
+
 
     private void update(View v) {
         String id = danceSongEditText.getText().toString();
@@ -133,36 +149,8 @@ public class DancePageFourthActivity extends AppCompatActivity {
             Snackbar.make(v, "Error, Dance song id " + id + " was not deleted ", Snackbar.LENGTH_SHORT).show();
     }
 
-    private void addNewSongForDance() {
-        Intent goToAddCreateSongForDanceIntent = new Intent(DancePageFourthActivity.this, AddSongForDanceScrollingActivity.class);
-        startActivityForResult(goToAddCreateSongForDanceIntent, ADD_SONG_FOR_DANCE_ACTIVITY_CODE);
-    }
-
-    private void addDanceSong(Intent data) {
-        // to identify which class data we are getting
-        // now we are getting dance song in here
-        String resultMessage;
-        DanceSong danceSong = (DanceSong) data.getSerializableExtra(DanceSong.DANCE_SONG_KEY);
-        // we need to persist this in database
-        Long result = danceSongDataService.add(danceSong);
-        // checking if an id is less than zero which means something is wrong in there.
-        if (result > 0){
-            resultMessage = "Your dance song was created with id: "+result;
-        }else {
-            resultMessage = "Your dance song couldn't be created. Try Again!";
-        }
-        Snackbar.make(rootView, resultMessage, Snackbar.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == ADD_SONG_FOR_DANCE_ACTIVITY_CODE){
-            if (resultCode == RESULT_OK){
-                addDanceSong(data);
-            }
-        }
-    }
+/*    private void clear(View v) {
+        danceSongEditText.getText().clear();
+    }*/
 
 }

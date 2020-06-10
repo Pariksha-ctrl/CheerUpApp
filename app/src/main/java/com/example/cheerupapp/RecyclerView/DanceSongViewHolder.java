@@ -12,10 +12,16 @@ import com.example.cheerupapp.entities.DanceSong;
 
 public class DanceSongViewHolder extends RecyclerView.ViewHolder {
 
-    public ImageView danceSongImageView = null;
+    /*public ImageView danceSongImageView = null;
     public TextView danceSongNameTextView = null;
     public TextView favoriteVerseTextView = null;
-    public TextView totalRateTextView = null;
+    public TextView totalRateTextView = null;*/
+
+    public ImageView danceSongImageView;
+    public TextView danceSongNameTextView;
+    public TextView favoriteVerseTextView;
+    public TextView totalRateTextView;
+
 
     // mapping the UI components to the XML layout
     public DanceSongViewHolder(@NonNull View itemView) {

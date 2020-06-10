@@ -8,9 +8,11 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.cheerupapp.R;
 import com.example.cheerupapp.entities.DanceSong;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 public class AddSongForDanceScrollingActivity extends AppCompatActivity {
@@ -20,6 +22,7 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
     private SeekBar ratingSeekBar;
     private Button cancelSongButton;
     private Button addDanceSongButton;
+
     private Integer ratingValue = 0;
     private DanceSong danceSong;
 
@@ -28,7 +31,19 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_dance_song_scrolling);
 
-        songNameEditText = findViewById(R.id.songNameEditText);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+        songNameEditText = findViewById(R.id.danceSongEditText);
         addFavoriteVerseEditText = findViewById(R.id.addFavoriteVerseEditText);
         ratingSeekBar = findViewById(R.id.ratingSeekBar);
         cancelSongButton = findViewById(R.id.cancelSongButton);
@@ -81,7 +96,6 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
             return;
         }
         String favoriteVerse = addFavoriteVerseEditText.getText().toString().trim();
-
         danceSong = new DanceSong();
         danceSong.setName(songName);
         danceSong.setFavoriteVerse(favoriteVerse);
@@ -89,9 +103,9 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
 
         //after we click add, we need to close this activity and go back to Dance page fifth activity
         // for that we need to create intent
-        Intent goingBackToDancePage = new Intent();
-        goingBackToDancePage.putExtra(DanceSong.DANCE_SONG_KEY, danceSong);
-        setResult(RESULT_OK, goingBackToDancePage);
+        Intent goingBackToDanceSongContentPage = new Intent();
+        goingBackToDanceSongContentPage.putExtra(DanceSong.DANCE_SONG_KEY, danceSong);
+        setResult(RESULT_OK, goingBackToDanceSongContentPage);
         finish();
     }
 }

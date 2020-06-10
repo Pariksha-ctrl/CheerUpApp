@@ -35,7 +35,7 @@ public class DanceSongRecyclerViewAdapter extends RecyclerView.Adapter<DanceSong
 
         DanceSongViewHolder danceSongViewHolder = new DanceSongViewHolder(danceSongViewItem);
 
-        return null;
+        return danceSongViewHolder;
     }
 
     // setting the data to the view holder
@@ -48,5 +48,10 @@ public class DanceSongRecyclerViewAdapter extends RecyclerView.Adapter<DanceSong
     @Override
     public int getItemCount() {
         return danceSongs.size();
+    }
+
+    public void addItem(DanceSong danceSong){
+        danceSongs.add(danceSong);
+        notifyItemInserted(getItemCount());
     }
 }
