@@ -40,16 +40,6 @@ public class MainActivity extends AppCompatActivity {
                 // to show the user name on Welcome Page
                 goToWelcomePageIntent.putExtra(User.USER_KEY, user);
 
-                //goToWelcomePageIntent.putExtra("USER_GREETING", "Good Morning");
-                //goToWelcomePageIntent.putExtra("USER_NAME", "Pariksha");
-
-                //String userName = userNameEditText.getText().toString();
-
-                // if we are not getting any values or data back
-                //startActivity(goToWelcomePageIntent);
-
-                // if we are getting any values or data back
-
                 startActivityForResult(goToWelcomePageIntent, REQUEST_CODE_WELCOME_PAGE_SECOND_SCREEN);
             }
         });

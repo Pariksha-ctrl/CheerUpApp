@@ -2,9 +2,12 @@ package com.example.cheerupapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toolbar;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -13,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cheerupapp.R;
 import com.example.cheerupapp.RecyclerView.DanceSongRecyclerViewAdapter;
+import com.example.cheerupapp.RecyclerView.OnDanceSongListener;
 import com.example.cheerupapp.entities.DanceSong;
 import com.example.cheerupapp.services.DanceSongDataService;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -21,8 +25,9 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.List;
 
 import static com.example.cheerupapp.entities.Constants.ADD_SONG_FOR_DANCE_ACTIVITY_CODE;
+import static com.example.cheerupapp.entities.Constants.DANCE_SONG_VIEW_DETAILS_ACTIVITY_CODE;
 
-public class DanceSongContent extends AppCompatActivity {
+public class DanceSongContent extends AppCompatActivity implements OnDanceSongListener{
 
     private List<DanceSong> danceSongs;
     private DanceSongRecyclerViewAdapter danceSongAdapter;
@@ -63,7 +68,7 @@ public class DanceSongContent extends AppCompatActivity {
         //Call database to get all the danceSong
         danceSongs = danceSongDataService.getDanceSongs();
         //Creating a RecyclerViewAdapter and passing the data
-        danceSongAdapter = new DanceSongRecyclerViewAdapter(danceSongs, this);
+        danceSongAdapter = new DanceSongRecyclerViewAdapter(danceSongs, this, this);
         //Setting Adapter to the RecyclerView
         danceSongRecyclerView.setAdapter(danceSongAdapter);
     }
@@ -83,6 +88,32 @@ public class DanceSongContent extends AppCompatActivity {
         if(requestCode == ADD_SONG_FOR_DANCE_ACTIVITY_CODE){
             if (resultCode == RESULT_OK){
                 addDanceSong(data);
+            }
+        }
+        if( requestCode == DANCE_SONG_VIEW_DETAILS_ACTIVITY_CODE){
+            if(resultCode == RESULT_OK){
+                modifyDanceSong(data);
+            }
+        }
+    }
+
+    private void modifyDanceSong(Intent data) {
+        Integer stars;
+        Long id;
+
+        if (data.hasExtra(DanceSong.DANCE_SONG_KEY) && data.hasExtra(DanceSong.DANCE_SONG_STARS)){
+            DanceSong danceSong = (DanceSong)data.getSerializableExtra(DanceSong.DANCE_SONG_KEY);
+
+            stars = data.getExtras().getInt(DanceSong.DANCE_SONG_STARS);
+            id = data.getExtras().getLong(DanceSong.DANCE_SONG_ID);
+
+            if (stars > 0){
+                boolean result = danceSongDataService.rateDanceSong(id, stars);
+                int position = danceSongAdapter.getDanceSongs().indexOf(danceSong);
+                if (position > 0){
+                    danceSong = danceSongDataService.getDanceSong(id);
+                    danceSongAdapter.replaceItem(position, danceSong);
+                }
             }
         }
     }
@@ -106,6 +137,34 @@ public class DanceSongContent extends AppCompatActivity {
             resultMessage = "Your dance song couldn't be created. Try Again!";
         }
         Snackbar.make(rootView, resultMessage, Snackbar.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.dance_song_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings)
+        {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void onDanceSongClick(DanceSong danceSong) {
+        showDanceSongDetail(danceSong);
+    }
+
+    private void showDanceSongDetail(DanceSong danceSong) {
+        Intent goToDanceSongDetail = new Intent(this, AddSongForDanceScrollingActivity.class);
+        goToDanceSongDetail.putExtra(DanceSong.DANCE_SONG_KEY, danceSong);
+        startActivityForResult(goToDanceSongDetail, DANCE_SONG_VIEW_DETAILS_ACTIVITY_CODE);
+
     }
 
 }

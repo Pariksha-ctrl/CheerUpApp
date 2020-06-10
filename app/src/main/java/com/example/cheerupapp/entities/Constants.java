@@ -7,4 +7,5 @@ public class Constants {
     public static final Integer REQUEST_CODE_DANCE_PAGE_FOURTH_SCREEN = 4;
     public static final Integer DANCE_SONG_KEY = 5;
     public static final Integer ADD_SONG_FOR_DANCE_ACTIVITY_CODE = 6;
+    public static final Integer DANCE_SONG_VIEW_DETAILS_ACTIVITY_CODE = 7;
 }

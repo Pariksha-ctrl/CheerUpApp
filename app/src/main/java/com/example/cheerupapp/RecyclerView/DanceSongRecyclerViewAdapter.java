@@ -17,11 +17,17 @@ public class DanceSongRecyclerViewAdapter extends RecyclerView.Adapter<DanceSong
 
     private List<DanceSong> danceSongs;
     private Context context;
+    private  OnDanceSongListener onDanceSongListener;
+
+    public List<DanceSong> getDanceSongs(){
+        return danceSongs;
+    }
 
     // Constructor
-    public DanceSongRecyclerViewAdapter(List<DanceSong> danceSongs, Context context) {
+    public DanceSongRecyclerViewAdapter(List<DanceSong> danceSongs, Context context, OnDanceSongListener onDanceSongListener) {
         this.danceSongs = danceSongs;
         this.context = context;
+        this.onDanceSongListener = onDanceSongListener;
     }
 
     @NonNull
@@ -34,7 +40,6 @@ public class DanceSongRecyclerViewAdapter extends RecyclerView.Adapter<DanceSong
         View danceSongViewItem = inflater.inflate(R.layout.recycler_dance_song_list_view, parent, false);
 
         DanceSongViewHolder danceSongViewHolder = new DanceSongViewHolder(danceSongViewItem);
-
         return danceSongViewHolder;
     }
 
@@ -43,6 +48,7 @@ public class DanceSongRecyclerViewAdapter extends RecyclerView.Adapter<DanceSong
     public void onBindViewHolder(@NonNull DanceSongViewHolder holder, int position) {
          DanceSong danceSong = danceSongs.get(position);
          holder.updateDanceSong(danceSong);
+         holder.bind(danceSong, onDanceSongListener);
     }
 
     @Override
@@ -54,4 +60,12 @@ public class DanceSongRecyclerViewAdapter extends RecyclerView.Adapter<DanceSong
         danceSongs.add(danceSong);
         notifyItemInserted(getItemCount());
     }
+
+    public void replaceItem(int position, DanceSong danceSong){
+        danceSongs.set(position, danceSong);
+        notifyItemChanged(position);
+    }
+
+
+
 }

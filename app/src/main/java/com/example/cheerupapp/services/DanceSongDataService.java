@@ -11,6 +11,14 @@ public class DanceSongDataService {
 
     private DanceSongDatabaseHelper sqlite;
 
+    public void connect(){
+
+    }
+
+    public void disconnect(){
+
+    }
+
     public void init(Context context) {
         sqlite = sqlite.getInstance(context);
     }
@@ -35,11 +43,14 @@ public class DanceSongDataService {
 
     // this method is used to get a dance song from a database with its primary key - id
     public DanceSong getDanceSong(Long id){
-        return null;
+
+        return sqlite.getDanceSong(id);
     }
+
 
     // this method is used to rate dance songs
     public boolean rateDanceSong(Long id, Integer stars){
-        return false;
+
+        return sqlite.rateDanceSong(id, stars);
     }
 }

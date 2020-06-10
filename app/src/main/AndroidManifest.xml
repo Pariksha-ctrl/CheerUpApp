@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.DanceSongContent"></activity>
+        <activity
+            android:name=".activities.DanceSongDetailScrollingActivity"
+            android:label="@string/title_activity_dance_song_detail_scrolling"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activities.DanceSongContent" />
         <activity
             android:name=".activities.AddSongForDanceScrollingActivity"
             android:label="@string/title_activity_add_song_scrolling"

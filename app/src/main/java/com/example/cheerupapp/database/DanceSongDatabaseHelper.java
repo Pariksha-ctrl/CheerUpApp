@@ -15,6 +15,10 @@ import java.util.List;
 import java.util.Random;
 
 public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
+
+    private static DanceSongDatabaseHelper mInstance = null;
+    private Context context;
+
     private static final String DATABASE_NAME = "danceSong.db";
     private static final Integer DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "danceSong";
@@ -28,8 +32,6 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_VOTES = "VOTES";
     private static final String COL_STARS = "STARS";
 
-    // this method is created to prevent more than one number of instance for a same class
-    private static DanceSongDatabaseHelper mInstance = null;
 
     // create this instance only when it is null
     // if it is not null, then it will created whatever has been created before
@@ -53,6 +55,8 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     private static final String GET_ALL_STATEMENTS = "SELECT * FROM " + TABLE_NAME;
+    private static final String GET_DANCE_SONG_BY_ID = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_ID + "= ?";
+    private static final String UPDATE_DANCE_SONG_VOTES = "UPDATE " + TABLE_NAME + " SET " + COL_STARS + " = " + COL_STARS + " + ? " + ", " + COL_VOTES + " = " + COL_VOTES + " + 1" + " WHERE " + COL_ID + "= ?";
 
     private DanceSongDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -89,11 +93,12 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
         return databaseContentResult;
     }
 
-    private String getRandomDanceSongImageName() {
-        Random randomDanceSongImageName = new Random();
-        int value = randomDanceSongImageName.nextInt(10) + 1;
-        return "DanceSong_" + value;
+    // get all dance songs in the table called danceSong
+    private  Cursor getAll(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery(GET_ALL_STATEMENTS, null);
     }
+
 
     // it will return if something is updated or not
     public boolean update(Long id, String name, String favoriteVerse, Integer rating){
@@ -117,10 +122,15 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
         return  numOfRowsDeleted == 1;
     }
 
+    private String getRandomDanceSongImageName() {
+        Random randomDanceSongImageName = new Random();
+        int value = randomDanceSongImageName.nextInt(10) + 1;
+        return "DanceSong_" + value;
+    }
+
     public List<DanceSong> getAllDanceSongs(){
         List<DanceSong> danceSongs = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(GET_ALL_STATEMENTS, null);
+        Cursor cursor = getAll();
 
         if (cursor.getCount() > 0){
             DanceSong danceSong;
@@ -140,6 +150,32 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return danceSongs;
+    }
+
+    public  DanceSong getDanceSong(Long id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        DanceSong danceSong = null;
+        Cursor cursor = db.rawQuery(GET_DANCE_SONG_BY_ID, new String[]{id.toString()});
+
+        if (cursor.getCount() > 0){
+            String name = cursor.getString(1);
+            String favoriteVerse = cursor.getString(2);
+            String image = cursor.getString(3);
+            Integer rating = cursor.getInt(4);
+            Long votes = cursor.getLong(5);
+            Long stars = cursor.getLong(6);
+
+            danceSong = new DanceSong(id, name, favoriteVerse, image, rating, votes, stars);
+        }
+        cursor.close();
+        return danceSong;
+    }
+
+    public boolean rateDanceSong(Long id, Integer stars){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.execSQL(UPDATE_DANCE_SONG_VOTES, new String[ ]{stars.toString(), id.toString()});
+        return true;
     }
 }
 

@@ -71,9 +71,6 @@ public class WelcomePageSecondActivity extends AppCompatActivity {
         if (requestCode == REQUEST_CODE_MORNING_ACTIVITIES_PAGE_THIRD_SCREEN){
           if (resultCode == RESULT_OK){
                 // if all good
-              /*
-                String messagePassedBackToLeavingUser = data.getStringExtra("USER_LEAVING_MESSAGE");
-                Toast.makeText(this, messagePassedBackToLeavingUser, Toast.LENGTH_SHORT).show();*/
             }
         }
 

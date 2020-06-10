@@ -45,7 +45,7 @@
                 app:layout_constraintGuide_percent="0.98" />
 
             <TextView
-                android:id="@+id/danceSongNameTextView"
+                android:id="@+id/danceSongNameEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -57,7 +57,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
             <TextView
-                android:id="@+id/favoriteVerseTextView"
+                android:id="@+id/danceSongFavoriteVerseEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -65,30 +65,30 @@
                 app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-                app:layout_constraintTop_toBottomOf="@+id/danceSongNameTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/danceSongNameEditText" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/action1Button"
                 android:layout_width="106dp"
                 android:layout_height="51dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="4dp"
-                android:text="Button"
+                android:text="ACTION 1"
                 app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
                 app:layout_constraintHorizontal_bias="0.029"
                 app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-                app:layout_constraintTop_toBottomOf="@+id/favoriteVerseTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/danceSongFavoriteVerseEditText" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/action2Button"
                 android:layout_width="114dp"
                 android:layout_height="52dp"
                 android:layout_marginStart="4dp"
-                android:text="Button"
-                app:layout_constraintBottom_toBottomOf="@+id/button"
+                android:text="ACTION 2"
+                app:layout_constraintBottom_toBottomOf="@+id/action1Button"
                 app:layout_constraintEnd_toStartOf="@+id/middleGuideline"
-                app:layout_constraintStart_toEndOf="@+id/button"
-                app:layout_constraintTop_toTopOf="@+id/button"
+                app:layout_constraintStart_toEndOf="@+id/action1Button"
+                app:layout_constraintTop_toTopOf="@+id/action1Button"
                 app:layout_constraintVertical_bias="0.0" />
 
             <androidx.constraintlayout.widget.Guideline
@@ -107,16 +107,16 @@
                 android:numStars="10"
                 android:stepSize="1"
                 app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-                app:layout_constraintTop_toBottomOf="@+id/totalRateTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/danceSongTotalVotesTextView" />
 
             <TextView
-                android:id="@+id/totalRateTextView"
+                android:id="@+id/danceSongTotalVotesTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="44dp"
                 android:text="TextView"
                 app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-                app:layout_constraintTop_toTopOf="@+id/button2" />
+                app:layout_constraintTop_toTopOf="@+id/action2Button" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
