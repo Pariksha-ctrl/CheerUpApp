@@ -17,7 +17,7 @@ public class WelcomePageSecondActivity extends AppCompatActivity {
 
     TextView userNameTextView;
     Button goBackToMainPageButton;
-    Button letsDoCheerfulActivitiesButton;
+    Button letsDanceToCheerUpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +32,9 @@ public class WelcomePageSecondActivity extends AppCompatActivity {
         final TextView userNameTextView = findViewById(R.id.userGreetingTextView);
         userNameTextView.setText(user.getName());
 
-        letsDoCheerfulActivitiesButton = findViewById(R.id.letsDoCheerfulActivitiesButton);
+        letsDanceToCheerUpButton = findViewById(R.id.letsDanceToCheerUpButton);
 
-        letsDoCheerfulActivitiesButton.setOnClickListener(new View.OnClickListener() {
+        letsDanceToCheerUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // stating our intention
