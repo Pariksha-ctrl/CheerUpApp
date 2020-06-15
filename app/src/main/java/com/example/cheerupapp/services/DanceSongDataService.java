@@ -32,18 +32,12 @@ public class DanceSongDataService {
         return sqlite.delete(danceSong.getId());
     }
 
-    public boolean update(DanceSong danceSong){
+    public boolean update(DanceSong danceSong) {
         return sqlite.update(danceSong.getId(), danceSong.getName(), danceSong.getFavoriteVerse(), danceSong.getRating());
     }
 
-    public List<DanceSong> getDanceSongs(){
-        List<DanceSong> danceSongs = sqlite.getAllDanceSongs();
-        return danceSongs;
-    }
-
-    // this method is used to get a dance song from a database with its primary key - id
+/*    // this method is used to get a dance song from a database with its primary key - id
     public DanceSong getDanceSong(Long id){
-
         return sqlite.getDanceSong(id);
     }
 
@@ -52,5 +46,10 @@ public class DanceSongDataService {
     public boolean rateDanceSong(Long id, Integer stars){
 
         return sqlite.rateDanceSong(id, stars);
+    }*/
+
+    public List<DanceSong> getDanceSongs(){
+        List<DanceSong> danceSongs = sqlite.getAllDanceSongs();
+        return danceSongs;
     }
 }

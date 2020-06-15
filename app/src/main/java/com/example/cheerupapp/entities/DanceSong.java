@@ -17,11 +17,14 @@ public class DanceSong implements Serializable {
     private String name;
     private String favoriteVerse;
     private String danceSongImageFileName;
-    private Integer rating;
+    private Long rating;
     private Long votes;
     private Long stars;
 
-    public DanceSong(Long id, String name, String favoriteVerse, String danceSongImageFileName, Integer rating, Long votes, Long stars) {
+    public DanceSong() {
+    }
+
+    public DanceSong(Long id, String name, String favoriteVerse, String danceSongImageFileName, Long rating, Long votes, Long stars) {
         this.id = id;
         this.name = name;
         this.favoriteVerse = favoriteVerse;
@@ -31,9 +34,6 @@ public class DanceSong implements Serializable {
         this.stars = stars;
     }
 
-    public DanceSong() {
-
-    }
 
     public Long getId() {
         return id;
@@ -59,11 +59,11 @@ public class DanceSong implements Serializable {
         this.favoriteVerse = favoriteVerse;
     }
 
-    public Integer getRating() {
+    public Long getRating() {
         return rating;
     }
 
-    public void setRating(Integer rating) {
+    public void setRating(Long rating) {
         this.rating = rating;
     }
 
@@ -94,14 +94,14 @@ public class DanceSong implements Serializable {
     @Override
     public String toString() {
         return "DanceSong{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", favoriteVerse='" + favoriteVerse + '\'' +
-                ", danceSongImageName='" + danceSongImageFileName + '\'' +
-                ", rating=" + rating +
-                ", votes=" + votes +
-                ", stars=" + stars +
-                '}';
+                "id=" + id + System.lineSeparator() +
+                ", name='" + name + System.lineSeparator() +
+                ", favoriteVerse='" + favoriteVerse + System.lineSeparator() +
+                ", danceSongImageName='" + danceSongImageFileName  + System.lineSeparator() +
+                ", rating=" + rating + System.lineSeparator() +
+                ", votes=" + votes + System.lineSeparator() +
+                ", stars=" + stars + System.lineSeparator() +
+                '}' + System.lineSeparator();
     }
 
     @Override

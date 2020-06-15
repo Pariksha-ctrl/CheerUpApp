@@ -5,16 +5,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import androidx.annotation.Nullable;
-
 import com.example.cheerupapp.entities.DanceSong;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
+
+    private static final String TAG = DanceSongDatabaseHelper.class.getName();
 
     private static DanceSongDatabaseHelper mInstance = null;
     private Context context;
@@ -32,17 +31,6 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_VOTES = "VOTES";
     private static final String COL_STARS = "STARS";
 
-
-    // create this instance only when it is null
-    // if it is not null, then it will created whatever has been created before
-    // it will help to save the consumption of memory
-    public static synchronized DanceSongDatabaseHelper getInstance(Context context) {
-        if (mInstance == null) {
-            mInstance = new DanceSongDatabaseHelper(context.getApplicationContext());
-        }
-        return mInstance;
-    }
-
     private static final String CREATE_TABLE_STATEMENT = "CREATE TABLE" + " " + TABLE_NAME + "(" +
             COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COL_NAME + " TEXT, " +
@@ -58,8 +46,19 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
     private static final String GET_DANCE_SONG_BY_ID = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_ID + "= ?";
     private static final String UPDATE_DANCE_SONG_VOTES = "UPDATE " + TABLE_NAME + " SET " + COL_STARS + " = " + COL_STARS + " + ? " + ", " + COL_VOTES + " = " + COL_VOTES + " + 1" + " WHERE " + COL_ID + "= ?";
 
+    // create this instance only when it is null
+    // if it is not null, then it will created whatever has been created before
+    // it will help to save the consumption of memory
+    public static synchronized DanceSongDatabaseHelper getInstance(Context context) {
+        if (mInstance == null) {
+            mInstance = new DanceSongDatabaseHelper(context.getApplicationContext());
+        }
+        return mInstance;
+    }
+
     private DanceSongDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     // this method check if given database exists or not
@@ -78,7 +77,7 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Add a Dance Song to the database
-    public Long insert(String name, String favoriteVerse, Integer rating) {
+    public Long insert(String name, String favoriteVerse, Long rating) {
         // create an instance of SQLITE database
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -99,9 +98,8 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
         return db.rawQuery(GET_ALL_STATEMENTS, null);
     }
 
-
     // it will return if something is updated or not
-    public boolean update(Long id, String name, String favoriteVerse, Integer rating){
+    public boolean update(Long id, String name, String favoriteVerse, Long rating){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues valuesOfDanceSongDatabaseTable = new ContentValues();
@@ -110,14 +108,14 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
         valuesOfDanceSongDatabaseTable.put(COL_FAVORITE_VERSE, favoriteVerse);
         valuesOfDanceSongDatabaseTable.put(COL_RATING, rating);
 
-        int numOfRowsUpdated = db.update(TABLE_NAME, valuesOfDanceSongDatabaseTable, "ID = ?", new String[] {id.toString() });
+        int numOfRowsUpdated = db.update(TABLE_NAME, valuesOfDanceSongDatabaseTable, "ID = ?", new String[]{id.toString()});
         db.close();
         return  numOfRowsUpdated == 1; // condition evaluated if no. of rows updated is 1, it will return true else it is false
     }
 
     public boolean delete (Long id){
         SQLiteDatabase db = this.getWritableDatabase();
-        int numOfRowsDeleted = db.delete(TABLE_NAME, "ID = ?", new String[] { id.toString() });
+        int numOfRowsDeleted = db.delete(TABLE_NAME, "ID = ?", new String[]{id.toString()});
         db.close();
         return  numOfRowsDeleted == 1;
     }
@@ -128,6 +126,7 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
         return "DanceSong_" + value;
     }
 
+    // it returns a list of all dance songs from the database table called danceSong.db
     public List<DanceSong> getAllDanceSongs(){
         List<DanceSong> danceSongs = new ArrayList<>();
         Cursor cursor = getAll();
@@ -139,12 +138,12 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
                 Long id = cursor.getLong(0);
                 String name = cursor.getString(1);
                 String favoriteVerse = cursor.getString(2);
-                String image = cursor.getString(3);
-                Integer rating = cursor.getInt(4);
+                String imageFileName = cursor.getString(3);
+                Long rating = cursor.getLong(4);
                 Long votes = cursor.getLong(5);
                 Long stars = cursor.getLong(6);
 
-                danceSong = new DanceSong(id, name, favoriteVerse, image, rating, votes, stars);
+                danceSong = new DanceSong(id, name, favoriteVerse, imageFileName, rating, votes, stars);
                 danceSongs.add(danceSong);
             }
         }
@@ -152,7 +151,9 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
         return danceSongs;
     }
 
-    public  DanceSong getDanceSong(Long id) {
+
+
+    /*public  DanceSong getDanceSong(Long id) {
         SQLiteDatabase db = this.getReadableDatabase();
         DanceSong danceSong = null;
         Cursor cursor = db.rawQuery(GET_DANCE_SONG_BY_ID, new String[]{id.toString()});
@@ -161,7 +162,7 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
             String name = cursor.getString(1);
             String favoriteVerse = cursor.getString(2);
             String image = cursor.getString(3);
-            Integer rating = cursor.getInt(4);
+            Long rating = Long.valueOf(cursor.getInt(4));
             Long votes = cursor.getLong(5);
             Long stars = cursor.getLong(6);
 
@@ -176,6 +177,6 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL(UPDATE_DANCE_SONG_VOTES, new String[ ]{stars.toString(), id.toString()});
         return true;
-    }
+    }*/
 }
 

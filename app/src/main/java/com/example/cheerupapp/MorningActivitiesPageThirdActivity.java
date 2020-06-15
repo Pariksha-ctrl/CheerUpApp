@@ -60,11 +60,8 @@ public class MorningActivitiesPageThirdActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_DANCE_PAGE_FOURTH_SCREEN){
             if (resultCode == RESULT_OK){
-                /*// if all good
-                String messagePassedBackToLeavingUser = data.getStringExtra("USER_DANCE_LEAVE_MESSAGE");
-                Toast.makeText(this, messagePassedBackToLeavingUser, Toast.LENGTH_SHORT).show();*/
+
             }
         }
-
     }
 }

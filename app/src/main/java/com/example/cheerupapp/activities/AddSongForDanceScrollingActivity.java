@@ -23,8 +23,9 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
     private Button cancelSongButton;
     private Button addDanceSongButton;
 
-    private Integer ratingValue = 0;
     private DanceSong danceSong;
+    private Long ratingValue = 0L;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
             }
         });
 
-        songNameEditText = findViewById(R.id.danceSongEditText);
+        songNameEditText = findViewById(R.id.danceSongIdEditText);
         addFavoriteVerseEditText = findViewById(R.id.addFavoriteVerseEditText);
         ratingSeekBar = findViewById(R.id.ratingSeekBar);
         cancelSongButton = findViewById(R.id.cancelSongButton);
@@ -66,7 +67,7 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
         ratingSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                ratingValue = progress;
+                ratingValue = Long.valueOf(progress);
             }
 
             @Override
@@ -79,11 +80,6 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
 
             }
         });
-
-    }
-
-    private void cancel(View v) {
-        finish();
     }
 
     private void addDanceSong(View v) {
@@ -99,13 +95,18 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
         danceSong = new DanceSong();
         danceSong.setName(songName);
         danceSong.setFavoriteVerse(favoriteVerse);
-        danceSong.setRating((ratingValue));
+        danceSong.setRating(ratingValue);
 
         //after we click add, we need to close this activity and go back to Dance page fifth activity
         // for that we need to create intent
-        Intent goingBackToDanceSongContentPage = new Intent();
-        goingBackToDanceSongContentPage.putExtra(DanceSong.DANCE_SONG_KEY, danceSong);
-        setResult(RESULT_OK, goingBackToDanceSongContentPage);
+        Intent goingBackIntent = new Intent();
+        goingBackIntent.putExtra(DanceSong.DANCE_SONG_KEY, danceSong);
+        setResult(RESULT_OK, goingBackIntent);
+        finish();
+    }
+
+    private void cancel(View v) {
+        setResult(RESULT_CANCELED);
         finish();
     }
 }
