@@ -37,9 +37,9 @@ public class DanceSongRecyclerViewAdapter extends RecyclerView.Adapter<DanceSong
         // create the UI physically form xml we use LayoutInflater class
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
-        View danceSongViewItem = inflater.inflate(R.layout.recycler_dance_song_list_view, parent, false);
+        View danceSongViewItem = inflater.inflate(R.layout.recycler_dance_song_view, parent, false);
 
-        DanceSongViewHolder danceSongViewHolder = new DanceSongViewHolder(danceSongViewItem);
+        DanceSongViewHolder danceSongViewHolder = new DanceSongViewHolder(danceSongViewItem, onDanceSongListener);
         return danceSongViewHolder;
     }
 
@@ -65,7 +65,5 @@ public class DanceSongRecyclerViewAdapter extends RecyclerView.Adapter<DanceSong
         danceSongs.set(position, danceSong);
         notifyItemChanged(position);
     }
-
-
 
 }

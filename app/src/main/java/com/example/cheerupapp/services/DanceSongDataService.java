@@ -36,7 +36,12 @@ public class DanceSongDataService {
         return sqlite.update(danceSong.getId(), danceSong.getName(), danceSong.getFavoriteVerse(), danceSong.getRating());
     }
 
-/*    // this method is used to get a dance song from a database with its primary key - id
+    public List<DanceSong> getDanceSongs(){
+        List<DanceSong> danceSongs = sqlite.getAllDanceSongs();
+        return danceSongs;
+    }
+
+    // this method is used to get a dance song from a database with its primary key - id
     public DanceSong getDanceSong(Long id){
         return sqlite.getDanceSong(id);
     }
@@ -44,12 +49,8 @@ public class DanceSongDataService {
 
     // this method is used to rate dance songs
     public boolean rateDanceSong(Long id, Integer stars){
-
         return sqlite.rateDanceSong(id, stars);
-    }*/
-
-    public List<DanceSong> getDanceSongs(){
-        List<DanceSong> danceSongs = sqlite.getAllDanceSongs();
-        return danceSongs;
     }
+
+
 }

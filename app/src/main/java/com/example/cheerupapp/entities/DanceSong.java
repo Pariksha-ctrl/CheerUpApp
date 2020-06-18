@@ -16,24 +16,23 @@ public class DanceSong implements Serializable {
     private Long id;
     private String name;
     private String favoriteVerse;
-    private String danceSongImageFileName;
-    private Long rating;
+    private String imageFileName;
+    private Integer rating;
     private Long votes;
     private Long stars;
 
     public DanceSong() {
     }
 
-    public DanceSong(Long id, String name, String favoriteVerse, String danceSongImageFileName, Long rating, Long votes, Long stars) {
+    public DanceSong(Long id, String name, String favoriteVerse, String imageFileName, Integer rating, Long votes, Long stars) {
         this.id = id;
         this.name = name;
         this.favoriteVerse = favoriteVerse;
-        this.danceSongImageFileName = danceSongImageFileName;
+        this.imageFileName = imageFileName;
         this.rating = rating;
         this.votes = votes;
         this.stars = stars;
     }
-
 
     public Long getId() {
         return id;
@@ -59,20 +58,20 @@ public class DanceSong implements Serializable {
         this.favoriteVerse = favoriteVerse;
     }
 
-    public Long getRating() {
+    public Integer getRating() {
         return rating;
     }
 
-    public void setRating(Long rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
-    public String getDanceSongImageName() {
-        return danceSongImageFileName;
+    public String getImageFileName() {
+        return imageFileName;
     }
 
-    public void setDanceSongImageName(String danceSongImageName) {
-        this.danceSongImageFileName = danceSongImageName;
+    public void setImageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
     }
 
     public Long getVotes() {
@@ -94,20 +93,16 @@ public class DanceSong implements Serializable {
     @Override
     public String toString() {
         return "DanceSong{" +
-                "id=" + id + System.lineSeparator() +
-                ", name='" + name + System.lineSeparator() +
-                ", favoriteVerse='" + favoriteVerse + System.lineSeparator() +
-                ", danceSongImageName='" + danceSongImageFileName  + System.lineSeparator() +
-                ", rating=" + rating + System.lineSeparator() +
-                ", votes=" + votes + System.lineSeparator() +
-                ", stars=" + stars + System.lineSeparator() +
-                '}' + System.lineSeparator();
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", favoriteVerse='" + favoriteVerse + '\'' +
+                ", imageFileName='" + imageFileName  + '\'' +
+                ", rating=" + rating +
+                ", votes=" + votes +
+                ", stars=" + stars +
+                '}';
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 
     @Override
     public boolean equals(@Nullable Object obj) {
@@ -115,5 +110,10 @@ public class DanceSong implements Serializable {
         if ((obj == null) || getClass() != obj.getClass()) return false;
         DanceSong danceSong = (DanceSong) obj;
         return id.equals(danceSong.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

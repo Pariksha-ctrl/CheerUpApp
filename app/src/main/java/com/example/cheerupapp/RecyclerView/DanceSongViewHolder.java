@@ -29,7 +29,7 @@ public class DanceSongViewHolder extends RecyclerView.ViewHolder {
     private  OnDanceSongListener onDanceSongListener;
 
     // mapping the UI components to the XML layout
-    public DanceSongViewHolder(@NonNull View itemView) {
+    public DanceSongViewHolder(@NonNull View itemView, OnDanceSongListener onDanceSongListener) {
         super(itemView);
 
         // Linking UI components with xml file tags.
@@ -46,10 +46,10 @@ public class DanceSongViewHolder extends RecyclerView.ViewHolder {
     // updating DanceSong with data
     // setting DanceSong objects or data into danceSongViewHolder
     public void updateDanceSong(DanceSong danceSong){
-        View rootView = danceSongImageView.getRootView();
-        int resID = rootView.getResources().getIdentifier(danceSong.getDanceSongImageName(), "drawable", rootView.getContext().getPackageName());
-        danceSongImageView.setImageResource(resID);
 
+        View rootView = danceSongImageView.getRootView();
+        int resID = rootView.getResources().getIdentifier(danceSong.getImageFileName(), "drawable", rootView.getContext().getPackageName());
+        danceSongImageView.setImageResource(resID);
         this.danceSongNameEditText.setText(danceSong.getName());
         this.danceSongFavoriteVerseEditText.setText(danceSong.getFavoriteVerse());
         this.danceSongTotalVotesTextView.setText(danceSong.getVotes() + " Votes");

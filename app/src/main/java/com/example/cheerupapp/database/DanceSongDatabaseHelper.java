@@ -5,8 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
 import androidx.annotation.Nullable;
+
 import com.example.cheerupapp.entities.DanceSong;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -77,14 +80,14 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Add a Dance Song to the database
-    public Long insert(String name, String favoriteVerse, Long rating) {
+    public Long insert(String name, String favoriteVerse, Integer rating) {
         // create an instance of SQLITE database
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues valuesOfDanceSongDatabaseTable = new ContentValues();
         valuesOfDanceSongDatabaseTable.put(COL_NAME, name);
         valuesOfDanceSongDatabaseTable.put(COL_FAVORITE_VERSE, favoriteVerse);
-        valuesOfDanceSongDatabaseTable.put(COL_IMAGE, getRandomDanceSongImageName());
+        valuesOfDanceSongDatabaseTable.put(COL_IMAGE, getRandomImageName());
         valuesOfDanceSongDatabaseTable.put(COL_RATING, rating);
 
         Long databaseContentResult = db.insert(TABLE_NAME, null, valuesOfDanceSongDatabaseTable);
@@ -99,7 +102,7 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
     }
 
     // it will return if something is updated or not
-    public boolean update(Long id, String name, String favoriteVerse, Long rating){
+    public boolean update(Long id, String name, String favoriteVerse, Integer rating){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues valuesOfDanceSongDatabaseTable = new ContentValues();
@@ -120,10 +123,10 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
         return  numOfRowsDeleted == 1;
     }
 
-    private String getRandomDanceSongImageName() {
+    private String getRandomImageName() {
         Random randomDanceSongImageName = new Random();
-        int value = randomDanceSongImageName.nextInt(10) + 1;
-        return "DanceSong_" + value;
+        int value = randomDanceSongImageName.nextInt(11) + 1;
+        return "dance_song_image_" + value;
     }
 
     // it returns a list of all dance songs from the database table called danceSong.db
@@ -139,7 +142,7 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
                 String name = cursor.getString(1);
                 String favoriteVerse = cursor.getString(2);
                 String imageFileName = cursor.getString(3);
-                Long rating = cursor.getLong(4);
+                Integer rating = cursor.getInt(4);
                 Long votes = cursor.getLong(5);
                 Long stars = cursor.getLong(6);
 
@@ -151,9 +154,7 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
         return danceSongs;
     }
 
-
-
-    /*public  DanceSong getDanceSong(Long id) {
+    public  DanceSong getDanceSong(Long id) {
         SQLiteDatabase db = this.getReadableDatabase();
         DanceSong danceSong = null;
         Cursor cursor = db.rawQuery(GET_DANCE_SONG_BY_ID, new String[]{id.toString()});
@@ -162,7 +163,7 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
             String name = cursor.getString(1);
             String favoriteVerse = cursor.getString(2);
             String image = cursor.getString(3);
-            Long rating = Long.valueOf(cursor.getInt(4));
+            Integer rating = cursor.getInt(4);
             Long votes = cursor.getLong(5);
             Long stars = cursor.getLong(6);
 
@@ -172,11 +173,10 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
         return danceSong;
     }
 
-    public boolean rateDanceSong(Long id, Integer stars){
+    public boolean rateDanceSong(Long id, Integer stars) {
         SQLiteDatabase db = this.getWritableDatabase();
-
-        db.execSQL(UPDATE_DANCE_SONG_VOTES, new String[ ]{stars.toString(), id.toString()});
+        db.execSQL(UPDATE_DANCE_SONG_VOTES, new String[]{stars.toString(), id.toString()});
         return true;
-    }*/
+    }
 }
 

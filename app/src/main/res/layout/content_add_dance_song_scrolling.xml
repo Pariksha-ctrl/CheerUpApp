@@ -28,7 +28,7 @@
             app:layout_constraintGuide_percent="0.97" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/songNameEditText"
+            android:id="@+id/danceSongNameEditText"
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_marginStart="8dp"
@@ -50,7 +50,7 @@
             android:hint="Add your favorite verse of this song"
             app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-            app:layout_constraintTop_toBottomOf="@+id/songNameEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/danceSongNameEditText" />
 
         <SeekBar
             android:id="@+id/ratingSeekBar"

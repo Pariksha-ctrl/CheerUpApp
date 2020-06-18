@@ -45,7 +45,6 @@ public class DanceSongDetailScrollingActivity extends AppCompatActivity {
             }
         });
 
-
         ImageView danceSongImageView= findViewById(R.id.danceSongImageViewDetailActivity);
         TextView danceSongNameTextView = findViewById(R.id.danceSongNameTextViewDetailActivity);
         danceSongRatingBar = findViewById(R.id.danceSongRatingBarDetailActivity);
@@ -63,9 +62,8 @@ public class DanceSongDetailScrollingActivity extends AppCompatActivity {
             }
         });
         View rootView = danceSongImageView.getRootView();
-        int resID = rootView.getResources().getIdentifier(danceSong.getDanceSongImageName() , "drawable" , rootView.getContext().getPackageName()) ;
+        int resID = rootView.getResources().getIdentifier(danceSong.getImageFileName() , "drawable" , rootView.getContext().getPackageName()) ;
         danceSongImageView.setImageResource(resID);
-
     }
 
     @Override

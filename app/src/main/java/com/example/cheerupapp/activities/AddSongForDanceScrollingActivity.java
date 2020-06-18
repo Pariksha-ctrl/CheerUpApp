@@ -17,14 +17,14 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class AddSongForDanceScrollingActivity extends AppCompatActivity {
 
-    private EditText songNameEditText;
+    private EditText danceSongNameEditText;
     private EditText addFavoriteVerseEditText;
     private SeekBar ratingSeekBar;
     private Button cancelSongButton;
     private Button addDanceSongButton;
 
     private DanceSong danceSong;
-    private Long ratingValue = 0L;
+    private Integer ratingValue = 0;
 
 
     @Override
@@ -44,18 +44,11 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
             }
         });
 
-        songNameEditText = findViewById(R.id.danceSongIdEditText);
+        danceSongNameEditText = findViewById(R.id.danceSongNameEditText);
         addFavoriteVerseEditText = findViewById(R.id.addFavoriteVerseEditText);
         ratingSeekBar = findViewById(R.id.ratingSeekBar);
         cancelSongButton = findViewById(R.id.cancelSongButton);
         addDanceSongButton = findViewById(R.id.addDanceSongButton);
-
-        addDanceSongButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addDanceSong(v);
-            }
-        });
 
         cancelSongButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,10 +57,17 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
             }
         });
 
+        addDanceSongButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addDanceSong(v);
+            }
+        });
+
         ratingSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                ratingValue = Long.valueOf(progress);
+                ratingValue = progress;
             }
 
             @Override
@@ -83,12 +83,12 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
     }
 
     private void addDanceSong(View v) {
-        String songName = songNameEditText.getText().toString();
+        String songName = danceSongNameEditText.getText().toString();
         //this trim method is to get rid of every empty spaces
         if (songName.trim().isEmpty()){
             Snackbar.make(v, "Song name is required", Snackbar.LENGTH_SHORT).show();
-            songNameEditText.getText().clear();
-            songNameEditText.requestFocus();
+            danceSongNameEditText.getText().clear();
+            danceSongNameEditText.requestFocus();
             return;
         }
         String favoriteVerse = addFavoriteVerseEditText.getText().toString().trim();
