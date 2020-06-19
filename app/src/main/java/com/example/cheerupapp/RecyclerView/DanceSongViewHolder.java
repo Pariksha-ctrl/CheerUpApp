@@ -14,15 +14,10 @@ import com.example.cheerupapp.entities.DanceSong;
 
 public class DanceSongViewHolder extends RecyclerView.ViewHolder {
 
-    /*public ImageView danceSongImageView = null;
-    public TextView danceSongNameTextView = null;
-    public TextView favoriteVerseTextView = null;
-    public TextView totalRateTextView = null;*/
-
-    public ImageView danceSongImageView;
-    public TextView danceSongNameEditText;
-    public TextView danceSongFavoriteVerseEditText;
-    public TextView danceSongTotalVotesTextView;
+    public final ImageView danceSongImageView;
+    public final TextView danceSongNameEditText;
+    public final TextView danceSongFavoriteVerseEditText;
+    public final TextView danceSongTotalVotesTextView;
     public RatingBar danceSongRatingBar = null;
     public Button action1Button;
 

@@ -29,7 +29,7 @@
         <ImageView
             android:id="@+id/logoImageView"
             android:layout_width="0dp"
-            android:layout_height="120dp"
+            android:layout_height="80dp"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
@@ -59,8 +59,8 @@
 
         <ImageView
             android:id="@+id/goodMorningLogoImageView"
-            android:layout_width="0dp"
-            android:layout_height="250dp"
+            android:layout_width="247dp"
+            android:layout_height="140dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
@@ -71,30 +71,17 @@
             app:layout_constraintTop_toBottomOf="@+id/logoImageView"
             app:srcCompat="@drawable/good_morning_logo_cheerup" />
 
-        <ImageView
-            android:id="@+id/pointingFingerImageView"
-            android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:scaleType="fitCenter"
-            app:layout_constraintEnd_toStartOf="@+id/middleGuideline"
-            app:layout_constraintHorizontal_bias="0.4"
-            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-            app:layout_constraintTop_toBottomOf="@+id/favoriteActivitiesTextView"
-            app:srcCompat="@drawable/pointing_finger_cheerup" />
-
         <TextView
             android:id="@+id/userGreetingTextView"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:text="Positive Vibes"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/middleGuideline"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             app:layout_constraintTop_toBottomOf="@+id/goodMorningLogoImageView" />
 
@@ -103,7 +90,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
             android:text="Lets get started with one of your favorite activities!"
             android:textSize="18sp"
@@ -114,15 +101,16 @@
 
         <Button
             android:id="@+id/goBackToWelcomePageButton"
-            android:layout_width="100dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="80dp"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="4dp"
             android:text="Back"
             app:layout_constraintEnd_toStartOf="@+id/middleGuideline"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-            app:layout_constraintTop_toBottomOf="@+id/pointingFingerImageView" />
+            app:layout_constraintTop_toBottomOf="@+id/favoriteActivitiesTextView" />
 
         <Button
             android:id="@+id/danceButton"
