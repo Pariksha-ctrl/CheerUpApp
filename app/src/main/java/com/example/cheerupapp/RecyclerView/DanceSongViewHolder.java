@@ -36,7 +36,7 @@ public class DanceSongViewHolder extends RecyclerView.ViewHolder {
         danceSongImageView = itemView.findViewById(R.id.danceSongImageView);
         danceSongNameEditText = itemView.findViewById(R.id.danceSongNameEditText);
         danceSongFavoriteVerseEditText = itemView.findViewById(R.id.danceSongFavoriteVerseEditText);
-        danceSongTotalVotesTextView = itemView.findViewById(R.id.danceSongTotalVotesTextView);
+        danceSongTotalVotesTextView = itemView.findViewById(R.id.sweetnessTextView);
         danceSongRatingBar = itemView.findViewById(R.id.danceSongRatingBar);
         action1Button = itemView.findViewById(R.id.action1Button);
 
@@ -48,7 +48,7 @@ public class DanceSongViewHolder extends RecyclerView.ViewHolder {
     public void updateDanceSong(DanceSong danceSong){
 
         View rootView = danceSongImageView.getRootView();
-        int resID = rootView.getResources().getIdentifier(danceSong.getImageFileName(), "drawable", rootView.getContext().getPackageName());
+        int resID = rootView.getResources().getIdentifier(danceSong.imageFileName, "drawable", rootView.getContext().getPackageName());
         danceSongImageView.setImageResource(resID);
         this.danceSongNameEditText.setText(danceSong.getName());
         this.danceSongFavoriteVerseEditText.setText(danceSong.getFavoriteVerse());

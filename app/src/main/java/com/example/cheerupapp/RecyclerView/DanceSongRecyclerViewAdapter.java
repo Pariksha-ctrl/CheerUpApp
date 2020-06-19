@@ -53,6 +53,7 @@ public class DanceSongRecyclerViewAdapter extends RecyclerView.Adapter<DanceSong
 
     @Override
     public int getItemCount() {
+
         return danceSongs.size();
     }
 

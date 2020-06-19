@@ -14,6 +14,19 @@
         android:minHeight="800dp">
 
         <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="155dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintHorizontal_bias="0.583"
+            app:layout_constraintStart_toStartOf="@+id/middleGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/goodMorningLogoImageView"
+            app:srcCompat="@drawable/dance_song_image_10" />
+
+        <ImageView
             android:id="@+id/logoImageView"
             android:layout_width="0dp"
             android:layout_height="120dp"
@@ -75,11 +88,13 @@
             android:id="@+id/userGreetingTextView"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
-            android:text="TextView"
-            android:textSize="24sp"
+            android:text="Positive Vibes"
+            android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/middleGuideline"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             app:layout_constraintTop_toBottomOf="@+id/goodMorningLogoImageView" />
 
@@ -87,6 +102,7 @@
             android:id="@+id/favoriteActivitiesTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:text="Lets get started with one of your favorite activities!"
@@ -113,12 +129,13 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="106dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="16dp"
             android:text="Dance"
             app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/middleGuideline"
-            app:layout_constraintTop_toBottomOf="@+id/goodMorningLogoImageView" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

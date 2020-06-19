@@ -20,9 +20,10 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="50dp"
-            android:text="TextView"
+            android:text="WELCOME"
             android:textAlignment="center"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
@@ -42,33 +43,34 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.97" />
 
-        <ImageView
-            android:id="@+id/profileImageView"
-            android:layout_width="0dp"
-            android:layout_height="201dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="50dp"
-            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-            app:layout_constraintTop_toBottomOf="@+id/userGreetingTextView"
-            app:srcCompat="@drawable/profile_picture_cheerup" />
-
         <TextView
             android:id="@+id/morningQuoteTextView"
             android:layout_width="321dp"
             android:layout_height="94dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:text="With the new day comes new strength and new thoughts. Good morning and lets us prepare ourselves for a wonderful Day ahead."
             android:textAlignment="center"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.235"
+            app:layout_constraintHorizontal_bias="0.3"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-            app:layout_constraintTop_toBottomOf="@+id/profileImageView" />
+            app:layout_constraintTop_toBottomOf="@+id/welcomeImageView" />
+
+        <ImageView
+            android:id="@+id/welcomeImageView"
+            android:layout_width="0dp"
+            android:layout_height="192dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FFEB3B"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/userGreetingTextView"
+            app:srcCompat="@drawable/good_morning_image" />
 
         <Button
             android:id="@+id/letsDanceToCheerUpButton"

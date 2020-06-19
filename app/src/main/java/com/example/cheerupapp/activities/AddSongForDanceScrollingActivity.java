@@ -19,12 +19,12 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
 
     private EditText danceSongNameEditText;
     private EditText addFavoriteVerseEditText;
-    private SeekBar ratingSeekBar;
+    private SeekBar sweetnessSeekBar;
     private Button cancelSongButton;
     private Button addDanceSongButton;
 
     private DanceSong danceSong;
-    private Integer ratingValue = 0;
+    private Integer sweetnessValue = 0;
 
 
     @Override
@@ -46,7 +46,7 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
 
         danceSongNameEditText = findViewById(R.id.danceSongNameEditText);
         addFavoriteVerseEditText = findViewById(R.id.addFavoriteVerseEditText);
-        ratingSeekBar = findViewById(R.id.ratingSeekBar);
+        sweetnessSeekBar = findViewById(R.id.sweetnessSeekBar);
         cancelSongButton = findViewById(R.id.cancelSongButton);
         addDanceSongButton = findViewById(R.id.addDanceSongButton);
 
@@ -64,10 +64,10 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
             }
         });
 
-        ratingSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        sweetnessSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                ratingValue = progress;
+                sweetnessValue = progress;
             }
 
             @Override
@@ -95,7 +95,7 @@ public class AddSongForDanceScrollingActivity extends AppCompatActivity {
         danceSong = new DanceSong();
         danceSong.setName(songName);
         danceSong.setFavoriteVerse(favoriteVerse);
-        danceSong.setRating(ratingValue);
+        danceSong.setSweetness(sweetnessValue);
 
         //after we click add, we need to close this activity and go back to Dance page fifth activity
         // for that we need to create intent

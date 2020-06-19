@@ -13,23 +13,23 @@ public class DanceSong implements Serializable {
     public static final String DANCE_SONG_ID = "dance_song_id";
 
     //attributes
-    private Long id;
-    private String name;
-    private String favoriteVerse;
-    private String imageFileName;
-    private Integer rating;
+    public Long id;
+    public String name;
+    public String favoriteVerse;
+    public String imageFileName;
+    public Integer sweetness;
     private Long votes;
     private Long stars;
 
     public DanceSong() {
     }
 
-    public DanceSong(Long id, String name, String favoriteVerse, String imageFileName, Integer rating, Long votes, Long stars) {
+    public DanceSong(Long id, String name, String favoriteVerse, String imageFileName, Integer sweetness, Long votes, Long stars) {
         this.id = id;
         this.name = name;
         this.favoriteVerse = favoriteVerse;
         this.imageFileName = imageFileName;
-        this.rating = rating;
+        this.sweetness = sweetness;
         this.votes = votes;
         this.stars = stars;
     }
@@ -58,12 +58,12 @@ public class DanceSong implements Serializable {
         this.favoriteVerse = favoriteVerse;
     }
 
-    public Integer getRating() {
-        return rating;
+    public Integer getSweetness() {
+        return sweetness;
     }
 
-    public void setRating(Integer rating) {
-        this.rating = rating;
+    public void setSweetness(Integer rating) {
+        this.sweetness = sweetness;
     }
 
     public String getImageFileName() {
@@ -97,7 +97,7 @@ public class DanceSong implements Serializable {
                 ", name='" + name + '\'' +
                 ", favoriteVerse='" + favoriteVerse + '\'' +
                 ", imageFileName='" + imageFileName  + '\'' +
-                ", rating=" + rating +
+                ", sweetness=" + sweetness +
                 ", votes=" + votes +
                 ", stars=" + stars +
                 '}';

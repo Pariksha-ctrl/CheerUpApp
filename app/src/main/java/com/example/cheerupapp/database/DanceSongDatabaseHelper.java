@@ -30,7 +30,7 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_NAME = "NAME";
     private static final String COL_FAVORITE_VERSE = "VERSE";
     private static final String COL_IMAGE = "IMAGE";
-    private static final String COL_RATING = "RATING";
+    private static final String COL_SWEETNESS = "SWEETNESS";
     private static final String COL_VOTES = "VOTES";
     private static final String COL_STARS = "STARS";
 
@@ -39,7 +39,7 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
             COL_NAME + " TEXT, " +
             COL_FAVORITE_VERSE + " TEXT, " +
             COL_IMAGE + " TEXT, " +
-            COL_RATING + "  INTEGER, " +
+            COL_SWEETNESS + "  INTEGER, " +
             COL_VOTES + " INTEGER DEFAULT 0, " +
             COL_STARS + " INTEGER DEFAULT 0 " +
             ")";
@@ -80,7 +80,7 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Add a Dance Song to the database
-    public Long insert(String name, String favoriteVerse, Integer rating) {
+    public Long insert(String name, String favoriteVerse, Integer sweetness) {
         // create an instance of SQLITE database
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -88,7 +88,7 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
         valuesOfDanceSongDatabaseTable.put(COL_NAME, name);
         valuesOfDanceSongDatabaseTable.put(COL_FAVORITE_VERSE, favoriteVerse);
         valuesOfDanceSongDatabaseTable.put(COL_IMAGE, getRandomImageName());
-        valuesOfDanceSongDatabaseTable.put(COL_RATING, rating);
+        valuesOfDanceSongDatabaseTable.put(COL_SWEETNESS, sweetness);
 
         Long databaseContentResult = db.insert(TABLE_NAME, null, valuesOfDanceSongDatabaseTable);
         db.close();
@@ -102,14 +102,14 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
     }
 
     // it will return if something is updated or not
-    public boolean update(Long id, String name, String favoriteVerse, Integer rating){
+    public boolean update(Long id, String name, String favoriteVerse, Integer sweetness){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues valuesOfDanceSongDatabaseTable = new ContentValues();
         valuesOfDanceSongDatabaseTable.put(COL_ID, id);
         valuesOfDanceSongDatabaseTable.put(COL_NAME, name);
         valuesOfDanceSongDatabaseTable.put(COL_FAVORITE_VERSE, favoriteVerse);
-        valuesOfDanceSongDatabaseTable.put(COL_RATING, rating);
+        valuesOfDanceSongDatabaseTable.put(COL_SWEETNESS, sweetness);
 
         int numOfRowsUpdated = db.update(TABLE_NAME, valuesOfDanceSongDatabaseTable, "ID = ?", new String[]{id.toString()});
         db.close();
@@ -142,11 +142,11 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
                 String name = cursor.getString(1);
                 String favoriteVerse = cursor.getString(2);
                 String imageFileName = cursor.getString(3);
-                Integer rating = cursor.getInt(4);
+                Integer sweetness = cursor.getInt(4);
                 Long votes = cursor.getLong(5);
                 Long stars = cursor.getLong(6);
 
-                danceSong = new DanceSong(id, name, favoriteVerse, imageFileName, rating, votes, stars);
+                danceSong = new DanceSong(id, name, favoriteVerse, imageFileName, sweetness, votes, stars);
                 danceSongs.add(danceSong);
             }
         }
@@ -163,11 +163,11 @@ public class DanceSongDatabaseHelper extends SQLiteOpenHelper {
             String name = cursor.getString(1);
             String favoriteVerse = cursor.getString(2);
             String image = cursor.getString(3);
-            Integer rating = cursor.getInt(4);
+            Integer sweetness = cursor.getInt(4);
             Long votes = cursor.getLong(5);
             Long stars = cursor.getLong(6);
 
-            danceSong = new DanceSong(id, name, favoriteVerse, image, rating, votes, stars);
+            danceSong = new DanceSong(id, name, favoriteVerse, image, sweetness, votes, stars);
         }
         cursor.close();
         return danceSong;

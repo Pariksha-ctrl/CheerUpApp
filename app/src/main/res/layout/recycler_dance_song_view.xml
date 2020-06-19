@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -12,6 +11,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,14 +22,15 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/danceSongImageView"
                 android:layout_width="0dp"
-                android:layout_height="287dp"
-                android:background="@drawable/ic_launcher_background"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_height="226dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/holo_orange_dark"
+                app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+                app:layout_constraintStart_toStartOf="@+id/leftGuideline"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/profile_picture_cheerup" />
+                app:srcCompat="@drawable/dance_song_image_1" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/leftGuideline"
@@ -54,7 +56,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
                 app:layout_constraintHorizontal_bias="0.14"
                 app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toBottomOf="@+id/danceSongImageView" />
 
             <TextView
                 android:id="@+id/danceSongFavoriteVerseEditText"
@@ -69,11 +71,12 @@
 
             <Button
                 android:id="@+id/action1Button"
-                android:layout_width="106dp"
-                android:layout_height="51dp"
+                android:layout_width="96dp"
+                android:layout_height="42dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="4dp"
                 android:text="ACTION 1"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
                 app:layout_constraintHorizontal_bias="0.029"
                 app:layout_constraintStart_toStartOf="@+id/leftGuideline"
@@ -81,10 +84,10 @@
 
             <Button
                 android:id="@+id/action2Button"
-                android:layout_width="114dp"
-                android:layout_height="52dp"
-                android:layout_marginStart="4dp"
+                android:layout_width="96dp"
+                android:layout_height="42dp"
                 android:text="ACTION 2"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 app:layout_constraintBottom_toBottomOf="@+id/action1Button"
                 app:layout_constraintEnd_toStartOf="@+id/middleGuideline"
                 app:layout_constraintStart_toEndOf="@+id/action1Button"
@@ -107,10 +110,10 @@
                 android:numStars="10"
                 android:stepSize="1"
                 app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-                app:layout_constraintTop_toBottomOf="@+id/danceSongTotalVotesTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/sweetnessTextView" />
 
             <TextView
-                android:id="@+id/danceSongTotalVotesTextView"
+                android:id="@+id/sweetnessTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="44dp"

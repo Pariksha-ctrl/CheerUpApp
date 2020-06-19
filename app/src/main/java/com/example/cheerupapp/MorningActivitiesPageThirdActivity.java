@@ -21,13 +21,6 @@ public class MorningActivitiesPageThirdActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_morning_activities_page_third);
-/*        final User user;
-
-        Intent userCallerIntent = new Intent();
-        user = (User) userCallerIntent.getSerializableExtra(User.USER_KEY);
-
-        userNameTextView = findViewById(R.id.userNameTextView);
-        userNameTextView.setText(user.getName());*/
 
         userGreetingTextView = findViewById(R.id.userGreetingTextView);
         userGreetingTextView.setText("Hi There!");
@@ -60,7 +53,7 @@ public class MorningActivitiesPageThirdActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_DANCE_PAGE_FOURTH_SCREEN){
             if (resultCode == RESULT_OK){
-
+                 // All Good
             }
         }
     }

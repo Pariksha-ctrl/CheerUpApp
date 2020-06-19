@@ -24,7 +24,7 @@ public class DanceSongDataService {
     }
 
     public Long add(DanceSong danceSong) {
-        return sqlite.insert(danceSong.getName(), danceSong.getFavoriteVerse(), danceSong.getRating());
+        return sqlite.insert(danceSong.getName(), danceSong.getFavoriteVerse(), danceSong.getSweetness());
     }
 
     public boolean delete(DanceSong danceSong){
@@ -33,7 +33,7 @@ public class DanceSongDataService {
     }
 
     public boolean update(DanceSong danceSong) {
-        return sqlite.update(danceSong.getId(), danceSong.getName(), danceSong.getFavoriteVerse(), danceSong.getRating());
+        return sqlite.update(danceSong.getId(), danceSong.getName(), danceSong.getFavoriteVerse(), danceSong.getSweetness());
     }
 
     public List<DanceSong> getDanceSongs(){

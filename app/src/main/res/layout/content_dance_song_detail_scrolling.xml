@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="500dp">
+        android:minHeight="520dp">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/leftGuideline"
@@ -64,9 +64,10 @@
             app:layout_constraintTop_toBottomOf="@+id/danceSongNameTextViewDetailActivity" />
 
         <TextView
-            android:id="@+id/overallRateingTextView"
+            android:id="@+id/overallRatingTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="Overall rating"
             app:layout_constraintEnd_toStartOf="@+id/danceSongRatingBarDetailActivity"

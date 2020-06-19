@@ -62,7 +62,7 @@ public class DanceSongDetailScrollingActivity extends AppCompatActivity {
             }
         });
         View rootView = danceSongImageView.getRootView();
-        int resID = rootView.getResources().getIdentifier(danceSong.getImageFileName() , "drawable" , rootView.getContext().getPackageName()) ;
+        int resID = rootView.getResources().getIdentifier(danceSong.imageFileName , "drawable" , rootView.getContext().getPackageName()) ;
         danceSongImageView.setImageResource(resID);
     }
 
